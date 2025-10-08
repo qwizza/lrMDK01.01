@@ -27,6 +27,8 @@ namespace LAB1
                     sum += Array[i]; /// суммирую положительные элементы массива 
                 }
             }
+            Console.WriteLine("Сумма положительных элементов:" + sum);
+            Console.ReadKey();
         }
     }
 }

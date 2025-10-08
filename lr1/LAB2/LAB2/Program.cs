@@ -18,6 +18,8 @@ namespace LAB2
             {
                 Array[i] = rand.Next(-500, 501); //ввел границы рандомных чисел от -500 по 500 включительно
             }
+
+            List<int> list = new List<int>();
         }
     }
 }

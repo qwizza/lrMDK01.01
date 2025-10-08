@@ -14,6 +14,8 @@ namespace LAB1
             Console.WriteLine("Введите размер массива: ");
             int Length = Convert.ToInt32(Console.ReadLine());
             int[] Array = new int[Length]; /// даю возможность ввести размер массива
+            Console.WriteLine("Введите элемент массива:");
+            for (int i = 0; i < Length; i++) /// даю возможность ввести значения для массива
         }
     }
 }

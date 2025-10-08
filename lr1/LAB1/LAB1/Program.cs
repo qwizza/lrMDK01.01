@@ -16,6 +16,17 @@ namespace LAB1
             int[] Array = new int[Length]; /// даю возможность ввести размер массива
             Console.WriteLine("Введите элемент массива:");
             for (int i = 0; i < Length; i++) /// даю возможность ввести значения для массива
+            {
+                Array[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            int sum = 0;
+            for (int i = 0; i < Length; i++)
+            {
+                if (Array[i] > 0) /// Отбираем положительные элементы массива 
+                {
+                    sum += Array[i]; /// суммирую положительные элементы массива 
+                }
+            }
         }
     }
 }

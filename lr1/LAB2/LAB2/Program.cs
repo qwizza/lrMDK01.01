@@ -14,6 +14,10 @@ namespace LAB2
             int[] Array = new int[1000];
             Random rand = new Random();
 
+            for (int i = 0; i < Array.Length; i++)
+            {
+                Array[i] = rand.Next(-500, 501); //ввел границы рандомных чисел от -500 по 500 включительно
+            }
         }
     }
 }

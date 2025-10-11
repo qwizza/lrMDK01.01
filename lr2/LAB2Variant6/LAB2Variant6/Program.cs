@@ -12,6 +12,15 @@ namespace LAB2Variant6
         static void Main()
         {
             string[] catalog = new string[] { "Суп", "Салат", "Выпечка", "Гарниры" };
+
+            string userQuery = InputModule.InputUserQuery();
+
+            int indexCatalog = SearchingModule.FindIndexCatalog(userQuery, сatalog);
+            if (indexCatalog < 0)
+            {
+                Console.WriteLine("Указан несуществующий жанр");
+                return;
+            }
         }
     }
 }

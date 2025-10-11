@@ -6,7 +6,7 @@ namespace LAB2Variant6
     {
         static void Main()
         {
-            string[] genres = new string[] { "Суп", "Салат", "Выпечка", "Гарниры" };
+            string[] catalog = new string[] { "Суп", "Салат", "Выпечка", "Гарниры" };
         }
     }
 }

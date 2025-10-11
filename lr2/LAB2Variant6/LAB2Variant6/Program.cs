@@ -21,6 +21,8 @@ namespace LAB2Variant6
                 Console.WriteLine("Указан несуществующий жанр");
                 return;
             }
+
+            var (dishsUserCatalog, countsUserCatalog) = SearchingModule.FindAllDishsByCenre(indexCatalog, dishs, counts);
         }
     }
 }

@@ -23,6 +23,9 @@ namespace LAB2Variant6
             }
 
             var (dishsUserCatalog, countsUserCatalog) = SearchingModule.FindAllDishsByCenre(indexCatalog, dishs, counts);
+
+            AnalysisDataModule.SortDishs(dishsUserCatalog, countsUserCatalog);
+            Print(dishsUserCatalog)
         }
     }
 }

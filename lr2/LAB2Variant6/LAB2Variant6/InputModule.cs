@@ -5,7 +5,7 @@ namespace LAB2Variant6
 {
     public class InputModule
     {
-        static public (List<string>[], List<int>[]) InputDishByCenre()
+        static public (List<string>[], List<int>[]) InputDishByCentre()
         {
             List<string>[] dishsByCatalog = new List<string>[4] { new List<string>(),
                                                                 new List<string>(),
@@ -32,7 +32,7 @@ namespace LAB2Variant6
             /// Заполняем салатные блюда (первый индекс)
             dishsByCatalog[1].Add("Греческий салат");
             counts[1].Add(2);
-            dishsByCatalog[1].Add("Олевье");
+            dishsByCatalog[1].Add("Оливье");
             counts[1].Add(25);
             dishsByCatalog[1].Add("Селедка под шубой");
             counts[1].Add(2);
@@ -42,21 +42,21 @@ namespace LAB2Variant6
             /// Заполняем выпечку (второй индекс)
             dishsByCatalog[2].Add("Сосиска в тесте");
             counts[2].Add(30);
-            dishsByCatalog[2].Add("перог с курицей и грибами");
+            dishsByCatalog[2].Add("Пирог с курицей и грибами");
             counts[2].Add(30);
-            dishsByCatalog[2].Add("Перог с картошкой");
+            dishsByCatalog[2].Add("Пирог с картошкой");
             counts[2].Add(30);
-            dishsByCatalog[2].Add("Перог с капустой");
+            dishsByCatalog[2].Add("Пирог с капустой");
             counts[2].Add(30);
 
             /// Заполняем ггарнирные блюда (третий индекс)
             dishsByCatalog[3].Add("Пюре");
             counts[3].Add(10);
-            dishsByCatalog[0].Add("Гречневая каша с грибами и тыквой");
+            dishsByCatalog[3].Add("Гречневая каша с грибами и тыквой");
             counts[3].Add(5);
-            dishsByCatalog[0].Add("Макароны с овщами и сыром");
+            dishsByCatalog[3].Add("Макароны с овощами и сыром");
             counts[3].Add(1);
-            dishsByCatalog[0].Add("Рис с овощами и яйцом");
+            dishsByCatalog[3].Add("Рис с овощами и яйцом");
             counts[3].Add(1);
 
             return (dishsByCatalog, counts);

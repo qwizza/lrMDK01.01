@@ -1,5 +1,6 @@
 ﻿
 
+using System;
 using System.Collections.Generic;
 
 namespace LAB2Variant6
@@ -26,10 +27,25 @@ namespace LAB2Variant6
             List<string> dishsByCatalog = new List<string>();
             List<int> countsByCatalog = new List<int>();
 
-            dishsByCatalog = alldishs[indexCatalog];
+            dishsByCatalog = allDishs[indexCatalog];
             countsByCatalog = counts[indexCatalog];
 
             return (dishsByCatalog, countsByCatalog);
+        }
+
+        internal static int FindIndexCatalog(string userQuery, object сatalog)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static (List<string> dishsUserCatalog, List<int> countsUserCatalog) FindAllDishsByCenre(int indexCatalog, object dishs, object counts)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static (List<string> dishsUserCatalog, List<int> countsUserCatalog) FindAllDishsByCenre(int indexCatalog, List<string>[] dishs, object counts)
+        {
+            throw new NotImplementedException();
         }
     }
 }

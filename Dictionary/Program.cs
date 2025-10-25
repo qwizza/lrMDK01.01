@@ -18,8 +18,9 @@ namespace Dictionary
             dictionary.Add("green", new List<string>() { "трава", "мяч" });
             dictionary.Add("red", new List<string>() { "яблоко", "мясо", "велосипед" });
 
-            foreach( string keys in dictionary.Keys)
-            Console.WriteLine(keys);
+            Console.WriteLine(string.Join(", ", dictionary.Keys));
+            
+           
         }
     }
 }

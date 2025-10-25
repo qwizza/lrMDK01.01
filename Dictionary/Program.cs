@@ -13,9 +13,13 @@ namespace Dictionary
         static void Main(string[] args)
         {
             Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
+            
             dictionary.Add("blue", new List<string>() { "я" });
             dictionary.Add("green", new List<string>() { "трава", "мяч" });
             dictionary.Add("red", new List<string>() { "яблоко", "мясо", "велосипед" });
+
+            foreach( string keys in dictionary.Keys)
+            Console.WriteLine(keys);
         }
     }
 }

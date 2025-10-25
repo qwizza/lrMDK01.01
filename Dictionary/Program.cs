@@ -27,7 +27,21 @@ namespace Dictionary
             Console.WriteLine(string.Join(", ", (dictionary["green"])));
             Console.WriteLine(string.Join(", ", (dictionary["red"])));
 
+            Console.WriteLine();
+            Console.WriteLine();
 
+            Console.WriteLine("Введите ключ:");
+            string key = Console.ReadLine();
+        }
+        public static void RequesKey(Dictionary<string, List<string>> x) 
+        {
+            Console.WriteLine("Введите ключ:");
+            string key = Console.ReadLine();
+            if (x.ContainsKey(key))
+            {
+
+            }
+            
         }
     }
 }

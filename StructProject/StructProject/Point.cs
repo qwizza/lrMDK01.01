@@ -18,6 +18,7 @@ namespace StructProject
             double lenVector = Math.Sqrt(diff);
 
             return lenVector;
+
         }
     }
 }

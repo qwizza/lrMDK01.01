@@ -41,7 +41,7 @@ namespace StructProject
                 allVectors[i] = v; /// положим (разместим) вектор в соответствующей ячейке массива
 
                 Console.WriteLine($"{v.begin.Name}:({v.begin.X}, {v.begin.Y})" +
-                  $" | {v.end.Name}:({v.end.X}, {v.end.Y})");
+                  $" | {v.end.Name}:({v.end.X}, {v.end.Y}) | Длина вектора: " + Point.CalcLenVector(v.begin, v.end));
 
                 Thread.Sleep(2000);
             }

@@ -30,13 +30,15 @@ namespace LAB2Variant6
         //расчитываем среднее значение 
         static public double CalculateAverage(List<int> counts)
         {
+            if (counts == null || counts.Count == 0) return 0;
+
             int sum = 0;
             foreach (int count in counts)
             {
                 sum += count;
             }
 
-            return sum / counts.Count;
+            return (double)sum / counts.Count;
         }
     }
 }

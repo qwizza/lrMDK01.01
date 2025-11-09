@@ -11,9 +11,16 @@ namespace LAB2Variant6
         private static List<string>[] dishs;
         private static List<int>[] counts;
 
-        static void Print(List<string> dishs)
+        static void Print(List<string> dishes, List<int> counts, double average, string category)
         {
-            Console.WriteLine(String.Join(", ", dishs));
+            Console.WriteLine($"Отчет по категории: {category} \nБлюда в порядке убывания популярности:");
+
+            for (int i = 0; i < dishes.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {dishes[i]}: {counts[i]} заказов");
+            }
+
+            Console.WriteLine($"Среднее число заказов: {average:F2}");
         }
 
         static void Main()
@@ -29,7 +36,7 @@ namespace LAB2Variant6
             int indexCatalog = SearchingModule.FindIndexCatalog(userQuery, catalog);
             if (indexCatalog < 0)
             {
-                Console.WriteLine("Указан несуществующий жанр");
+                Console.WriteLine("Указан несуществующий категория");
                 return;
             }
 
@@ -40,8 +47,12 @@ namespace LAB2Variant6
             }
 
             (List<string> dishsUserCatalog, List<int> countsUserCatalog) = SearchingModule.FindAllDishsByCenre(indexCatalog, dishs, counts);
-            LAB2Variant6.AnalysisDataModule.SortDishs(dishsUserCatalog, countsUserCatalog);
-            Print(dishsUserCatalog);
+
+           AnalysisDataModule.SortDishs(dishsUserCatalog, countsUserCatalog);
+
+           double average = AnalysisDataModule.CalculateAverage(countsUserCatalog);
+
+           Print(dishsUserCatalog, countsUserCatalog, average, catalog[indexCatalog]);
         }
     }
 }

@@ -7,7 +7,10 @@ namespace PhoneSale
     {
         static void Main()
         {
-            
+            List<PhoneSale> sales = InputModule.CreateSalesData();
+
+            DateTime startDate = new DateTime(2025, 11, 10);
+            DateTime endDate = new DateTime(2025, 11, 13);
         }
     }
 }

@@ -59,5 +59,9 @@ namespace ConsoleApp1
             }
             return sales;
         }
+        static void AnalyzeSales(List<Sale> sales, DateTime startDate, DateTime endDate)
+        {
+            
+        }
     }
 }

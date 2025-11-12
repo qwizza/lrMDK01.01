@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace PhoneShop
 {
@@ -14,6 +15,31 @@ namespace PhoneShop
                     result.Add(sale);
             }
             return result;
+        }
+        static public (string, int) FindBestSeller(List<PhoneSale> sales)
+        {
+            var phoneSales = new Dictionary<string, int>();
+
+            foreach (var sale in sales)
+            {
+                if (phoneSales.ContainsKey(sale.PhoneModel))
+                    phoneSales[sale.PhoneModel] += sale.Quantity;
+                else
+                    phoneSales[sale.PhoneModel] = sale.Quantity;
+            }
+
+            string bestModel = "";
+            int maxSales = 0;
+            foreach (var phone in phoneSales)
+            {
+                if (phone.Value > maxSales)
+                {
+                    maxSales = phone.Value;
+                    bestModel = phone.Key;
+                }
+            }
+
+            return (bestModel, maxSales);
         }
     }
 }

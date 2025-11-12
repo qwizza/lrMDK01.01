@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PhoneShop;
+using System;
 using System.Collections.Generic;
 
 namespace PhoneSale
@@ -11,6 +12,8 @@ namespace PhoneSale
 
             DateTime startDate = new DateTime(2025, 11, 10);
             DateTime endDate = new DateTime(2025, 11, 13);
+
+            List<PhoneSale> periodSales = AnalysisDataModule.GetSalesByPeriod(sales, startDate, endDate);
         }
     }
 }

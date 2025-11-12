@@ -6,6 +6,15 @@ namespace ConsoleApp1
 {
     class Program
     {
+        class Sale
+        {
+            public DateTime Date { get; set; }
+            public string Model { get; set; }
+            public decimal Price { get; set; }
+            public decimal Cost { get; set; }
+            public int Quantity { get; set; }
+        }
+
         static void Main()
         {
             List<Sale> sales = GenerateSalesData(30);
@@ -102,5 +111,5 @@ namespace ConsoleApp1
             }
         }
     }
-    }
 }
+

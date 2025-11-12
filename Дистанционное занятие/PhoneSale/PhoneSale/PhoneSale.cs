@@ -13,5 +13,9 @@ namespace PhoneSale
         public int Quantity { get; set; }
         public double Price { get; set; }
         public double Cost { get; set; }
+
+        public double Profit => Price - Cost;
+        public double TotalRevenue => Price * Quantity;
+        public double TotalProfit => Profit * Quantity;
     }
 }

@@ -33,6 +33,31 @@ namespace ConsoleApp1
                 new { Model = "Xiaomi Redmi Note 13", Price = 299m, Cost = 200m }
             };
 
+            var sales = new List<Sale>();
+            var random = new Random();
+            var startDate = new DateTime(2024, 1, 1);
+
+            for (int day = 0; day < days; day++)
+            {
+                var currentDate = startDate.AddDays(day);
+
+                foreach (var phone in phones)
+                {
+                    int quantity = random.Next(0, 6);
+                    if (quantity > 0)
+                    {
+                        sales.Add(new Sale
+                        {
+                            Date = currentDate,
+                            Model = phone.Model,
+                            Price = phone.Price,
+                            Cost = phone.Cost,
+                            Quantity = quantity
+                        });
+                    }
+                }
+            }
+            return sales;
         }
     }
 }

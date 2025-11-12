@@ -90,6 +90,17 @@ namespace ConsoleApp1
                 .Take(2)
                 .ToList();
 
+            Console.WriteLine($"\nАнализ продаж за период с {startDate:dd.MM.yyyy} по {endDate:dd.MM.yyyy}");
+            Console.WriteLine($"а) Общая сумма продаж: ${totalRevenue:F2}");
+            Console.WriteLine($"б) Самый продаваемый телефон: {bestSelling.Model} ({bestSelling.TotalQuantity} шт.)");
+            Console.WriteLine($"   Телефон с наименьшими продажами: {worstSelling.Model} ({worstSelling.TotalQuantity} шт.)");
+            Console.WriteLine("в) Два телефона с наибольшей прибылью:");
+
+            for (int i = 0; i < profitStats.Count; i++)
+            {
+                Console.WriteLine($"   {i + 1}. {profitStats[i].Model}: ${profitStats[i].TotalProfit:F2}");
+            }
         }
+    }
     }
 }

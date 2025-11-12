@@ -18,7 +18,11 @@ namespace ConsoleApp1
 
             DateTime startDate = new DateTime(2025, 10, 1);
             DateTime endDate = new DateTime(2025, 10, 30);
+
             AnalyzeSales(sales, startDate, endDate);
+
+            Console.WriteLine("Анализ за первую неделю:");
+            AnalyzeSales(sales, new DateTime(2024, 1, 1), new DateTime(2024, 1, 7));
         }
     }
 }

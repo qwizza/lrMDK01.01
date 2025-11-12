@@ -66,5 +66,16 @@ namespace PhoneShop
 
             return (worstModel, minSales);
         }
-    }
+        static public List<(string, double)> FindTopProfitPhones(List<PhoneSale> sales, int count)
+        {
+            var phoneProfits = new Dictionary<string, double>();
+
+            foreach (var sale in sales)
+            {
+                if (phoneProfits.ContainsKey(sale.PhoneModel))
+                    phoneProfits[sale.PhoneModel] += sale.TotalProfit;
+                else
+                    phoneProfits[sale.PhoneModel] = sale.TotalProfit;
+            }
+        }
 }

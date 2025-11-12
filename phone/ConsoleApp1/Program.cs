@@ -24,5 +24,9 @@ namespace ConsoleApp1
             Console.WriteLine("Анализ за первую неделю:");
             AnalyzeSales(sales, new DateTime(2025, 10, 1), new DateTime(2025, 10, 7));
         }
+        static List<Sale> GenerateSalesData(int days)
+        {
+            
+        }
     }
 }

@@ -41,5 +41,30 @@ namespace PhoneShop
 
             return (bestModel, maxSales);
         }
+        static public (string, int) FindWorstSeller(List<PhoneSale> sales)
+        {
+            var phoneSales = new Dictionary<string, int>();
+
+            foreach (var sale in sales)
+            {
+                if (phoneSales.ContainsKey(sale.PhoneModel))
+                    phoneSales[sale.PhoneModel] += sale.Quantity;
+                else
+                    phoneSales[sale.PhoneModel] = sale.Quantity;
+            }
+
+            string worstModel = "";
+            int minSales = int.MaxValue;
+            foreach (var phone in phoneSales)
+            {
+                if (phone.Value < minSales)
+                {
+                    minSales = phone.Value;
+                    worstModel = phone.Key;
+                }
+            }
+
+            return (worstModel, minSales);
+        }
     }
 }

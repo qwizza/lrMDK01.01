@@ -26,7 +26,13 @@ namespace ConsoleApp1
         }
         static List<Sale> GenerateSalesData(int days)
         {
-            
+            var phones = new[]
+            {
+                new { Model = "iPhone 15", Price = 999m, Cost = 700m },
+                new { Model = "Samsung Galaxy S24", Price = 899m, Cost = 650m },
+                new { Model = "Xiaomi Redmi Note 13", Price = 299m, Cost = 200m }
+            };
+
         }
     }
 }

@@ -61,7 +61,35 @@ namespace ConsoleApp1
         }
         static void AnalyzeSales(List<Sale> sales, DateTime startDate, DateTime endDate)
         {
-            
+            var filteredSales = sales.Where(s => s.Date >= startDate && s.Date <= endDate).ToList();
+
+            if (!filteredSales.Any())
+            {
+                Console.WriteLine("Нет данных за указанный период");
+                return;
+            }
+
+            decimal totalRevenue = filteredSales.Sum(s => s.Price * s.Quantity);
+
+            var phoneStats = filteredSales
+                .GroupBy(s => s.Model)
+                .Select(g => new { Model = g.Key, TotalQuantity = g.Sum(s => s.Quantity) })
+                .ToList();
+
+            var bestSelling = phoneStats.OrderByDescending(p => p.TotalQuantity).First();
+            var worstSelling = phoneStats.OrderBy(p => p.TotalQuantity).First();
+
+            var profitStats = filteredSales
+                .GroupBy(s => s.Model)
+                .Select(g => new
+                {
+                    Model = g.Key,
+                    TotalProfit = g.Sum(s => (s.Price - s.Cost) * s.Quantity)
+                })
+                .OrderByDescending(p => p.TotalProfit)
+                .Take(2)
+                .ToList();
+
         }
     }
 }

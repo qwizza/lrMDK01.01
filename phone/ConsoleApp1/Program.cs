@@ -22,7 +22,7 @@ namespace ConsoleApp1
             AnalyzeSales(sales, startDate, endDate);
 
             Console.WriteLine("Анализ за первую неделю:");
-            AnalyzeSales(sales, new DateTime(2024, 1, 1), new DateTime(2024, 1, 7));
+            AnalyzeSales(sales, new DateTime(2025, 10, 1), new DateTime(2025, 10, 7));
         }
     }
 }

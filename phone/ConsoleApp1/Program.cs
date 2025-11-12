@@ -9,6 +9,12 @@ namespace ConsoleApp1
         static void Main()
         {
             List<Sale> sales = GenerateSalesData(30);
+
+            Console.WriteLine("Пример данных о продажах:");
+            foreach (var sale in sales.Take(5))
+            {
+                Console.WriteLine($"{sale.Date:dd.MM.yyyy} - {sale.Model}: {sale.Quantity} шт. по ${sale.Price}");
+            }
         }
     }
 }

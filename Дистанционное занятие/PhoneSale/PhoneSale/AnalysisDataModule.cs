@@ -101,4 +101,12 @@ namespace PhoneShop
 
             return result;
         }
+        static public double CalculateTotalRevenue(List<PhoneSale> sales)
+        {
+            double total = 0;
+            foreach (var sale in sales)
+                total += sale.TotalRevenue;
+            return total;
+        }
+    }
 }

@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="AnalysisDataModule.cs" />
     <Compile Include="InputModule.cs" />
-    <Compile Include="PhoneSale.cs" />
+    <Compile Include="PhoneSales.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

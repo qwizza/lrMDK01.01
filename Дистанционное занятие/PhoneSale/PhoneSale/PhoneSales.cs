@@ -2,7 +2,7 @@
 
 namespace PhoneSale
 {
-    public class PhoneSale
+    public class PhoneSales
     {
         public DateTime Date { get; set; }
         public string PhoneModel { get; set; }

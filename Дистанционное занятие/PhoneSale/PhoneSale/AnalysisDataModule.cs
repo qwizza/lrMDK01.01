@@ -6,9 +6,9 @@ namespace PhoneShop
 {
     public class AnalysisDataModule
     {
-        static public List<PhoneSale> GetSalesByPeriod(List<PhoneSale> sales, DateTime startDate, DateTime endDate)
+        static public List<PhoneSales> GetSalesByPeriod(List<PhoneSales> sales, DateTime startDate, DateTime endDate)
         {
-            var result = new List<PhoneSale>();
+            var result = new List<PhoneSales>();
             foreach (var sale in sales)
             {
                 if (sale.Date >= startDate && sale.Date <= endDate)
@@ -16,7 +16,7 @@ namespace PhoneShop
             }
             return result;
         }
-        static public (string, int) FindBestSeller(List<PhoneSale> sales)
+        static public (string, int) FindBestSeller(List<PhoneSales> sales)
         {
             var phoneSales = new Dictionary<string, int>();
 
@@ -41,7 +41,7 @@ namespace PhoneShop
 
             return (bestModel, maxSales);
         }
-        static public (string, int) FindWorstSeller(List<PhoneSale> sales)
+        static public (string, int) FindWorstSeller(List<PhoneSales> sales)
         {
             var phoneSales = new Dictionary<string, int>();
 
@@ -66,7 +66,7 @@ namespace PhoneShop
 
             return (worstModel, minSales);
         }
-        static public List<(string, double)> FindTopProfitPhones(List<PhoneSale> sales, int count)
+        static public List<(string, double)> FindTopProfitPhones(List<PhoneSales> sales, int count)
         {
             var phoneProfits = new Dictionary<string, double>();
 
@@ -101,12 +101,14 @@ namespace PhoneShop
 
             return result;
         }
-        static public double CalculateTotalRevenue(List<PhoneSale> sales)
+        static public double CalculateTotalRevenue(List<PhoneSales> sales)
         {
             double total = 0;
             foreach (var sale in sales)
                 total += sale.TotalRevenue;
             return total;
         }
+
+        
     }
 }

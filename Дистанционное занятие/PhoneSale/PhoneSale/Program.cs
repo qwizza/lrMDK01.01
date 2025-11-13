@@ -32,7 +32,7 @@ namespace PhoneSale
                              List<(string, double)> topProfitPhones,
                              DateTime startDate, DateTime endDate)
         {
-            Console.WriteLine($"Отчет о продаже телефонов");
+            Console.WriteLine("Отчет о продаже телефонов");
             Console.WriteLine($"Период: {startDate:dd.MM.yyyy} - {endDate:dd.MM.yyyy}");
             Console.WriteLine();
 
@@ -41,7 +41,7 @@ namespace PhoneSale
             Console.WriteLine($"б) Самый продаваемый телефон: {bestSeller.Item1} ({bestSeller.Item2} штук)");
             Console.WriteLine($"   Наименее продаваемый телефон: {worstSeller.Item1} ({worstSeller.Item2} штук)");
 
-            Console.WriteLine($"в) Два самых прибыльных телефона:");
+            Console.WriteLine("в) Два самых прибыльных телефона:");
             foreach (var phone in topProfitPhones)
             {
                 Console.WriteLine($"   - {phone.Item1}: {phone.Item2:F2} долларов прибыли");
@@ -53,7 +53,7 @@ namespace PhoneSale
 
             foreach (var sale in sales)
             {
-                Console.WriteLine($"{sale.Date:dd.MM.yyyy}    {sale.PhoneModel.PadRight(28)} {sale.Quantity}      {sale.TotalRevenue:F2} долларов");
+                Console.WriteLine($"{sale.Date:dd.MM.yyyy}    {sale.PhoneModel.PadRight(26)} {sale.Quantity}      {sale.TotalRevenue:F2} долларов");
             }
         }
     }

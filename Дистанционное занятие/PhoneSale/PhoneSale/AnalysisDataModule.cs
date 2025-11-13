@@ -77,5 +77,28 @@ namespace PhoneShop
                 else
                     phoneProfits[sale.PhoneModel] = sale.TotalProfit;
             }
+
+            var sortedPhones = new List<(string, double)>();
+            foreach (var phone in phoneProfits)
+                sortedPhones.Add((phone.Key, phone.Value));
+
+            for (int i = 0; i < sortedPhones.Count - 1; i++)
+            {
+                for (int j = 0; j < sortedPhones.Count - 1 - i; j++)
+                {
+                    if (sortedPhones[j].Item2 < sortedPhones[j + 1].Item2)
+                    {
+                        var temp = sortedPhones[j];
+                        sortedPhones[j] = sortedPhones[j + 1];
+                        sortedPhones[j + 1] = temp;
+                    }
+                }
+            }
+
+            var result = new List<(string, double)>();
+            for (int i = 0; i < Math.Min(count, sortedPhones.Count); i++)
+                result.Add(sortedPhones[i]);
+
+            return result;
         }
 }

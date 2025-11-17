@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Variant_12
 {
-   class Function
+    class Function
     {
         public static void ShowTopPhones(List<Phone> phones)
         {
@@ -58,5 +58,17 @@ namespace Variant_12
                     }
                 }
             }
+            Console.WriteLine($"\n{brand} - самые популярные модели:");
+
+            for (int i = 0; i < modelName.Length; i++)
+            {
+                string model = modelName[i];
+                double average = (double)totalSales[model] / 4;
+
+                Console.WriteLine($"{i + 1}. {model}");
+                Console.WriteLine($"   Средние продажи: {average:F1} шт/неделю");
+                Console.WriteLine($"   Всего продано: {totalSales[model]} шт");
+            }
+        }
     }
 }

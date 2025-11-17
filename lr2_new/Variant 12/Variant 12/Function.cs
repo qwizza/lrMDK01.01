@@ -15,7 +15,7 @@ namespace Variant_12
 
             Dictionary<string, int> totalSales = new Dictionary<string, int>();
 
-            Dictionary<string, Dictionary<int, int>> weeklySales = new Dictionary<string, Dictionary<int, int>>();
+            Dictionary<string, int[]> weekSales = new Dictionary<string, int[]>();
         }
     }
 }

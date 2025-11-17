@@ -10,6 +10,7 @@ namespace Variant_12
     {
         static void Main(string[] args)
         {
+            List<Phone> sales = new List<Phone>();
         }
     }
 }

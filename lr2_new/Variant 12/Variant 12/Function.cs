@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Variant_12
 {
-    internal class Function
+   class Function
     {
+        public static void ShowTopPhones(List<Phone> phones)
+        {
+            
+        }
     }
 }

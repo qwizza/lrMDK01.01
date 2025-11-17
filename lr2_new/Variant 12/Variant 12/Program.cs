@@ -50,6 +50,8 @@ namespace Variant_12
             sales.Add(new Phone { brand = "Huawei", model = "Nova 12", week = 2, countSell = 2 });
             sales.Add(new Phone { brand = "Huawei", model = "Nova 12", week = 3, countSell = 4 });
             sales.Add(new Phone { brand = "Huawei", model = "Nova 12", week = 4, countSell = 3 });
+
+            Function.ShowTopPhones(sales);
         }
     }
 }

@@ -21,13 +21,13 @@ namespace Variant_12
             {
                 if (phone.brand == brand)
                 {
-                    if (modelSales.ContainsKey(phone.model))
+                    if (totalSales.ContainsKey(phone.model))
                     {
-                        modelSales[phone.model] += phone.countSell;
+                        totalSales[phone.model] += phone.countSell;
                     }
                     else
                     {
-                        modelSales.Add(phone.model, phone.countSell);
+                        totalSales.Add(phone.model, phone.countSell);
                         weekSales.Add(phone.model, new int[4]);
                     }
 
@@ -35,11 +35,28 @@ namespace Variant_12
                 }
             }
 
-            if (modelSales.Count == 0)
+            if (totalSales.Count == 0)
             {
                 Console.WriteLine("Такого бренда нету в магазине");
                 return;
             }
-        }
+            string[] modelName = new string[totalSales.Count];
+            totalSales.Keys.CopyTo(modelName, 0);
+
+            for (int i = 0; i < modelName.Length - 1; i++)
+            {
+                for (int j = 0; j < modelName.Length - 1 - i; j++)
+                {
+                    double sales1 = (double)totalSales[modelName[j]] / 4;
+                    double sales2 = (double)totalSales[modelName[j + 1]] / 4;
+
+                    if (sales1 < sales2)
+                    {
+                        string temp = modelName[j];
+                        modelName[j] = modelName[j + 1];
+                        modelName[j + 1] = temp;
+                    }
+                }
+            }
     }
 }

@@ -36,7 +36,14 @@ namespace matrix
         //создания матриц из входных данных
         public static Matrix CreateMatrixFromInput()
         {
+            Console.Write("Введите кол-во строк: ");
+            int rows = Convert.ToInt32(Console.ReadLine());
 
+            Console.Write("Введите кол-во столбцов: ");
+            int columns = Convert.ToInt32(Console.ReadLine());
+
+            //создание пустой матрицы
+            Matrix matrix = new Matrix(rows, columns);
         }
 
         static void Main()

@@ -42,6 +42,17 @@ namespace matrix
             return rows == columns;
         }
 
-        //Вычисление детерминанта 
+        //вычисление детерминанта 
+        public int Determinant()
+        {
+            //проверяем, являится ли матрица квадратно
+            if (!IsSquare())
+            {
+                Console.WriteLine("Матрица не квадратная");
+                return 0;
+            }
+
+
+        }
     }
 }

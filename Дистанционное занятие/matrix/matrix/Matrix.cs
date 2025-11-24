@@ -31,9 +31,9 @@ namespace matrix
             data[row, column] = value;
         }
         // метод для чтения числа из ячейки матрицы
-        public void GetValue(int row, int column)
+        public int GetValue(int row, int column)
         {
-
+            return data[row, column];
         }
     }
 }

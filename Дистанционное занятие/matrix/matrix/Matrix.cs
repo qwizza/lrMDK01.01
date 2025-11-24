@@ -58,6 +58,15 @@ namespace matrix
                 return data[0, 0];
             }
 
+            //проверка матрицы, имеет ли марица размер 2x2
+            if (rows == 2)
+            {
+                int a = data[0, 0];
+                int b = data[0, 1];
+                int c = data[1, 0];
+                int d = data[1, 1];
+                return a * d - b * c;
+            }
 
         }
     }

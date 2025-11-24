@@ -24,5 +24,11 @@ namespace matrix
         {
             return columns;
         }
+
+        //реализую метод для записи числа в ячейку матрицы
+        public void SetValue(int row, int column, int value)
+        {
+            data[row, column] = value;
+        }
     }
 }

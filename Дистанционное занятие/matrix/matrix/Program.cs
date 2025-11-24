@@ -33,6 +33,12 @@ namespace matrix
             
         }
 
+        //создания матриц из входных данных
+        public static Matrix CreateMatrixFromInput()
+        {
+
+        }
+
         static void Main()
         {
             

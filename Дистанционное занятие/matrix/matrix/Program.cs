@@ -63,7 +63,16 @@ namespace matrix
 
         static void Main()
         {
-            
+            Console.WriteLine("Создание первой матрицы");
+            Matrix matrix1 = CreateMatrixFromInput(); //создание первой матрицы 
+
+            Console.WriteLine("Ваша первая матрицы: ");
+            matrix1.Print();
+
+            if (matrix1.IsSquare()) //проверка на квадратность и поиск детерминанта
+            {
+                Console.WriteLine($"Определитель: {matrix1.Determinant()}");
+            }
         }
     }
 }

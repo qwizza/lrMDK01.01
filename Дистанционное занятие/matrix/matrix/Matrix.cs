@@ -25,10 +25,15 @@ namespace matrix
             return columns;
         }
 
-        //реализую метод для записи числа в ячейку матрицы
+        // метод для записи числа в ячейку матрицы
         public void SetValue(int row, int column, int value)
         {
             data[row, column] = value;
+        }
+        // метод для чтения числа из ячейки матрицы
+        public void GetValue(int row, int column)
+        {
+
         }
     }
 }

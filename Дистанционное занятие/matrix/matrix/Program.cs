@@ -44,6 +44,21 @@ namespace matrix
 
             //создание пустой матрицы
             Matrix matrix = new Matrix(rows, columns);
+
+            Console.WriteLine($"Введите значения для матрицы {rows}x{columns}:");
+            //заполнение матрицы
+            for (int i = 0; i < rows; i++) //перебирает строки
+            {
+                for (int j = 0; j < columns; j++) //перебирает столбцы
+                {
+                    //ввод каждого эллемента
+                    Console.Write($"Элемент [{i},{j}]: ");
+                    int value = Convert.ToInt32(Console.ReadLine());
+                    matrix.SetValue(i, j, value); //запись числа в матрицу
+                }
+            }
+
+            return matrix;
         }
 
         static void Main()

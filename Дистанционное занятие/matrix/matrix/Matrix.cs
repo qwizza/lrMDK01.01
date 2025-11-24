@@ -35,5 +35,13 @@ namespace matrix
         {
             return data[row, column];
         }
+
+        //проверка на квадратность
+        public bool IsSquare()
+        {
+            return rows == columns;
+        }
+
+        //Вычисление детерминанта 
     }
 }

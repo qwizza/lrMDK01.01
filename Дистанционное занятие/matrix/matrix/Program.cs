@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 
 namespace matrix
@@ -64,10 +65,11 @@ namespace matrix
         static void Main()
         {
             Console.WriteLine("Создание первой матрицы");
-            Matrix matrix1 = CreateMatrixFromInput(); //создание первой матрицы 
+            //создание первой матрицы
+            Matrix matrix1 = CreateMatrixFromInput(); //вызывю метод создания матрицы 
 
             Console.WriteLine("Ваша первая матрицы: ");
-            matrix1.Print();
+            matrix1.Print(); //вывожу первую матрицу через метод вывода 
 
             if (matrix1.IsSquare()) //проверка на квадратность и поиск детерминанта
             {
@@ -75,14 +77,24 @@ namespace matrix
             }
 
             Console.WriteLine("Создание второй матрицы");
-            Matrix matrix2 = CreateMatrixFromInput(); //создание второй матрицы 
+            //создание второй матрицы
+            Matrix matrix2 = CreateMatrixFromInput(); //вызывю метод создания матрицы 
 
             Console.WriteLine("Ваша вторая матрицы: ");
-            matrix2.Print();
+            matrix2.Print(); //вывожу вторую матрицу через метод вывода 
 
             if (matrix2.IsSquare()) //проверка на квадратность и поиск детерминанта
             {
                 Console.WriteLine($"Определитель: {matrix2.Determinant()}");
+            }
+
+            Console.WriteLine("Умножение матриц");
+            Matrix result = Multiply(matrix1, matrix2); //вызываю метод уножения
+
+            if (result != null) //проверяем что умножение удалось
+            {
+                Console.WriteLine("Результат умножения");
+                result.Print(); //вывожу результат умнажения через метод вывода 
             }
         }
     }

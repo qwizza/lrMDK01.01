@@ -75,7 +75,7 @@ namespace matrix
             }
 
             Console.WriteLine("Создание второй матрицы");
-            Matrix matrix2 = CreateMatrixFromInput(); //создание первой матрицы 
+            Matrix matrix2 = CreateMatrixFromInput(); //создание второй матрицы 
 
             Console.WriteLine("Ваша вторая матрицы: ");
             matrix2.Print();

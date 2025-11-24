@@ -14,5 +14,15 @@ namespace matrix
             this.columns = columns;
             data = new int[rows, columns];
         }
+
+        //метод для получения размера матриц
+        public int GetRows()
+        {
+            return rows;
+        }
+        public int GetColumns()
+        {
+            return columns;
+        }
     }
 }

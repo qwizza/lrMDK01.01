@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace matrix
 {
@@ -11,6 +12,24 @@ namespace matrix
             {
                 Console.WriteLine("Нельзя умножить, т.к. столбцы первой не равны строки второй");
                 return null;
+
+                //создал матрицу-результата
+                Matrix result = new Matrix(a.GetColumns(), b.GetColumns());
+
+                //создал цикл умножения
+                for (int i = 0; i < a.GetRows(); i++) //по сторокам а
+                { 
+                    for(int j =  0; j < b.GetColumns(); j++) //по сторока b
+                    {
+                        int sum = 0; // Сумма для ячейки [i,j]
+                        for (int k = 0; k < a.GetColumns(); k++) //по элементам строки и столбца
+                        {
+                            sum += a.GetValue(i, k) * b.GetValue(k, j);
+                        }
+                        result.SetValue(i, j, sum);
+                    }
+                }
+                return result;
             }
         }
 

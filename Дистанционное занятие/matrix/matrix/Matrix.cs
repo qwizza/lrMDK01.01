@@ -68,6 +68,21 @@ namespace matrix
                 return a * d - b * c;
             }
 
+            Console.WriteLine("Определитель только для матриц 1x1 и 2x2");
+            return 0;
+        }
+
+        //вывод матриц на экран
+        public void Print()
+        {
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    Console.Write(data[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }

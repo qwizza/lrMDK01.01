@@ -73,6 +73,17 @@ namespace matrix
             {
                 Console.WriteLine($"Определитель: {matrix1.Determinant()}");
             }
+
+            Console.WriteLine("Создание второй матрицы");
+            Matrix matrix2 = CreateMatrixFromInput(); //создание первой матрицы 
+
+            Console.WriteLine("Ваша вторая матрицы: ");
+            matrix2.Print();
+
+            if (matrix2.IsSquare()) //проверка на квадратность и поиск детерминанта
+            {
+                Console.WriteLine($"Определитель: {matrix2.Determinant()}");
+            }
         }
     }
 }

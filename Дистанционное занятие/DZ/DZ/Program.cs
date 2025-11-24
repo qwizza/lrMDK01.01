@@ -62,23 +62,15 @@ namespace DZ
 
             // б) Самый продаваемый телефон и телефон с наименьшими продажами
             Console.WriteLine("б) Анализ продаж по моделям:");
-            Function.GetBestAndWorstSellingPhones(sales, startPeriod, endPeriod);
+            Function.FindBestSellingPhone(sales, startPeriod, endPeriod);
             Console.WriteLine();
 
             // в) Два самых прибыльных телефона
             Console.WriteLine("в) Анализ прибыльности:");
-            Function.GetTopTwoProfitablePhones(sales, startPeriod, endPeriod);
+            Function.FindTopTwoProfitablePhones(sales, startPeriod, endPeriod);
             Console.WriteLine();
 
-            // Дополнительно: можно показать все данные для проверки
-            Console.WriteLine("Хотите просмотреть все данные о продажах? (y/n)");
-            if (Console.ReadLine().ToLower() == "y")
-            {
-                Function.ShowAllSales(sales);
-            }
-
-            Console.WriteLine("\nНажмите любую клавишу для выхода...");
-            Console.ReadKey();
+            
         }
     }
 }

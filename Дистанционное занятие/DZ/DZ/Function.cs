@@ -11,106 +11,119 @@ namespace DZ
         // а) Определить общую сумму проданного за период X
         public static double GetTotalSalesInPeriod(List<Phone> phones, DateTime startDate, DateTime endDate)
         {
-            double totalRevenue = 0;
+            double total = 0;
 
-            foreach (Phone phone in phones)
+            for (int i = 0; i < phones.Count; i++)
             {
-                if (phone.date >= startDate && phone.date <= endDate)
+                if (phones[i].date >= startDate && phones[i].date <= endDate)
                 {
-                    totalRevenue += phone.countSell * phone.price;
+                    total += phones[i].countSell * phones[i].price;
                 }
             }
 
-            return totalRevenue;
+            return total;
         }
 
         // б) Определить самый продаваемый телефон и телефон с наименьшим фактом продаж
-        public static void GetBestAndWorstSellingPhones(List<Phone> phones, DateTime startDate, DateTime endDate)
+        public static void FindBestSellingPhone(List<Phone> phones, DateTime startDate, DateTime endDate)
         {
-            Dictionary<string, int> phoneSales = new Dictionary<string, int>();
+            string bestPhone = "";
+            int bestCount = 0;
 
             foreach (Phone phone in phones)
             {
                 if (phone.date >= startDate && phone.date <= endDate)
                 {
-                    string phoneKey = $"{phone.brand} {phone.model}";
-
-                    if (phoneSales.ContainsKey(phoneKey))
+                    if (phone.countSell > bestCount)
                     {
-                        phoneSales[phoneKey] += phone.countSell;
-                    }
-                    else
-                    {
-                        phoneSales.Add(phoneKey, phone.countSell);
+                        bestCount = phone.countSell;
+                        bestPhone = phone.brand + " " + phone.model;
                     }
                 }
             }
 
-            if (phoneSales.Count == 0)
+            if (bestCount == 0)
             {
-                Console.WriteLine("Нет данных о продажах за указанный период");
-                return;
+                Console.WriteLine("Не было продаж");
             }
-
-            var bestSelling = phoneSales.OrderByDescending(x => x.Value).First();
-            var worstSelling = phoneSales.OrderBy(x => x.Value).First();
-
-            Console.WriteLine($"Самый продаваемый телефон: {bestSelling.Key} - {bestSelling.Value} шт.");
-            Console.WriteLine($"Телефон с наименьшими продажами: {worstSelling.Key} - {worstSelling.Value} шт.");
+            else
+            {
+                Console.WriteLine("Самый продаваемый: " + bestPhone);
+                Console.WriteLine($"Количество: {bestCount} шт.");
+            }
         }
 
         // в) Определить два телефона, приносящие наибольшую прибыль
-        public static void GetTopTwoProfitablePhones(List<Phone> phones, DateTime startDate, DateTime endDate)
+        public static void FindTopTwoProfitablePhones(List<Phone> phones, DateTime startDate, DateTime endDate)
         {
-            Dictionary<string, double> phoneProfits = new Dictionary<string, double>();
+            List<string> phoneNames = new List<string>();
+            List<double> phoneProfits = new List<double>();
 
             foreach (Phone phone in phones)
             {
                 if (phone.date >= startDate && phone.date <= endDate)
                 {
-                    string phoneKey = $"{phone.brand} {phone.model}";
+                    string phoneName = phone.brand + " " + phone.model;
                     double profit = phone.countSell * (phone.price - phone.cost);
 
-                    if (phoneProfits.ContainsKey(phoneKey))
+                    bool found = false;
+                    for (int i = 0; i < phoneNames.Count; i++)
                     {
-                        phoneProfits[phoneKey] += profit;
+                        if (phoneNames[i] == phoneName)
+                        {
+                            phoneProfits[i] += profit;
+                            found = true;
+                            break;
+                        }
                     }
-                    else
+
+                    if (!found)
                     {
-                        phoneProfits.Add(phoneKey, profit);
+                        phoneNames.Add(phoneName);
+                        phoneProfits.Add(profit);
                     }
                 }
             }
 
-            if (phoneProfits.Count == 0)
+            if (phoneNames.Count == 0)
             {
                 Console.WriteLine("Нет данных о прибыли за указанный период");
                 return;
             }
 
-            var topTwo = phoneProfits.OrderByDescending(x => x.Value).Take(2);
+            string bestPhone1 = "";
+            double bestProfit1 = 0;
+            string bestPhone2 = "";
+            double bestProfit2 = 0;
 
+            for (int i = 0; i < phoneNames.Count; i++)
+            {
+                if (phoneProfits[i] > bestProfit1)
+                {
+                    bestProfit2 = bestProfit1;
+                    bestPhone2 = bestPhone1;
+
+                    bestProfit1 = phoneProfits[i];
+                    bestPhone1 = phoneNames[i];
+                }
+                else if (phoneProfits[i] > bestProfit2)
+                {
+                    bestProfit2 = phoneProfits[i];
+                    bestPhone2 = phoneNames[i];
+                }
+            }
+
+            // Выводим результаты
             Console.WriteLine("Два самых прибыльных телефона:");
-            int rank = 1;
-            foreach (var phone in topTwo)
+            Console.WriteLine($"1.{bestPhone1} - прибыль: {bestProfit1.ToString("F2")} руб.");
+
+            if (bestProfit2 > 0)
             {
-                Console.WriteLine($"{rank}. {phone.Key} - прибыль: {phone.Value:F2} руб.");
-                rank++;
+                Console.WriteLine($"2.{bestPhone2} - прибыль: {bestProfit2.ToString("F2")} руб.");
             }
         }
 
-        // Вспомогательный метод для отображения всех продаж
-        public static void ShowAllSales(List<Phone> phones)
-        {
-            Console.WriteLine("Все данные о продажах:");
-            Console.WriteLine("Дата\t\tБренд\tМодель\t\tКол-во\tЦена\t\tСебест.\t\tПрибыль");
-            Console.WriteLine(new string('-', 80));
-
-            foreach (var phone in phones.OrderBy(p => p.date))
-            {
-                double profit = phone.countSell * (phone.price - phone.cost);
-                Console.WriteLine($"{phone.date:dd.MM.yyyy}\t{phone.brand}\t{phone.model,-10}\t{phone.countSell}\t{phone.price:F2}\t\t{phone.cost:F2}\t\t{profit:F2}");
-            }
-        }
+        
     }
 }
+    

@@ -52,12 +52,7 @@ namespace ManyClassAplication
             Console.WriteLine(sum);
         }
 
-        public struct ReportRow
-        {
-            public string Products;
-            public double Price;
-            public int Quantity;
-        }
+       
 
 
     }

@@ -29,6 +29,10 @@ namespace ManyClassAplication
 
             Console.Write("Сумма всех товаров на складе: "); storage.CalculateMany();
 
+            Console.WriteLine();
+            Console.WriteLine();
+
+
             Report report = new Report();
 
             ReportRow row1 = new ReportRow();
@@ -51,6 +55,7 @@ namespace ManyClassAplication
             report.AddReport(row3);
 
             report.PrintReport();
+            report.CalculateSum();
 
 
         }

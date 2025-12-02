@@ -19,17 +19,26 @@ namespace ManyClassAplication
         }
         public string ToString(ReportRow row)
         {
-            return row.Products + ";" + row.Price + ";" + row.Quantity;
+            return row.Products + "," + row.Price + "," + row.Quantity;
         }
         public string PrintReport()
         {
-            string result;
+            string result = "";
             foreach (ReportRow row in report_)
             {
-                
+                result += ToString(row) + "\n";
             }
+            Console.WriteLine(result);
             return result;
         }
-       
+        public void CalculateSum()
+        {
+            double sum = 0; 
+            foreach(ReportRow row in report_)
+            {
+                sum += row.Quantity * row.Price;
+            }
+            Console.WriteLine("Сумма всех товаров " + sum);
+        }
     }
 }

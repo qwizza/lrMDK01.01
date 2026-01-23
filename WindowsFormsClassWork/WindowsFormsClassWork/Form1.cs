@@ -17,9 +17,9 @@ namespace WindowsFormsClassWork
         {
             InitializeComponent();
 
-            ListStudent_.Add ( new Student("Рыжов Арсений", 18, 4.5, 1, "D:\\П30\\st\\person2.jpg"));
-            ListStudent_.Add ( new Student("Кувалдаев Вадим", 18, 4.5, 2, "D:\\П30\\st\\person1.jpg"));
-            ListStudent_.Add ( new Student("Морозов Артем", 18, 4.5, 3, "D:\\П30\\st\\person3.jpg"));
+            ListStudent_.Add ( new Student("Рыжов Арсений", 18, 4.5, 1, "C:\\repos\\WindowsFormsClassWork\\person2.jpg"));
+            ListStudent_.Add ( new Student("Кувалдаев Вадим", 18, 4.5, 2, "C:\\repos\\WindowsFormsClassWork\\person1.jpg"));
+            ListStudent_.Add ( new Student("Морозов Артем", 18, 4.5, 3, "C:\\repos\\WindowsFormsClassWork\\person3.jpg"));
 
             studiontListBox.DataSource = ListStudent_;
             studiontListBox.DisplayMember = "Name";
@@ -33,7 +33,7 @@ namespace WindowsFormsClassWork
             ageLabel.Text = st.Age.ToString();
             avgLabel.Text = st.Avg.ToString();
             ticketnumberLabel.Text = st.TicketNumber.ToString();
-            picture.Load = st.Image;
+            imagePath.Load(st.imagePath);
         }
 
         

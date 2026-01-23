@@ -12,16 +12,16 @@ namespace WindowsFormsClassWork
         private int age_;
         private double avg_;
         private int ticketNumber_;
-        private string Image_;
+        private string imagePath_;
 
 
-        public Student(string name, int age, double avg, int ticketNumber, string Image)
+        public Student(string name, int age, double avg, int ticketNumber, string imagePath)
         {
             name_ = name;
             age_ = age;
             avg_ = avg;
             ticketNumber_ = ticketNumber;
-            Image_ = Image;
+            imagePath_  = imagePath;
         }
 
         public string Name
@@ -44,9 +44,9 @@ namespace WindowsFormsClassWork
             get { return ticketNumber_; }
         }
 
-        public string Image
+        public string imagePath
         {
-            get { return Image_; }
+            get { return imagePath_; }
         }
     }
 }

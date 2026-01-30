@@ -1,35 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LR3
 {
     public partial class MainForm : Form
     {
-        private List<MenuGroup> menuGroups;
-        private Dictionary<string, List<MenuGroup>> dishesBygroup;
-        private Dictionary <Dish,int> orderdDish;
-        private Dish currentDish;
-        private Dictionary<string, Image> DishImage;
+        private List<MenuGroup> menuGroups = new List<MenuGroup>();
+        private Dictionary<string, List<Dish>> dishesByGroup = new Dictionary<string, List<Dish>>();
+        private List<OrderItem> currentOrder = new List<OrderItem>();
 
         public MainForm()
         {
             InitializeComponent();
-            
-            
+            InitializeMenuData();
+            SetupEventHandlers();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        
     }
 }

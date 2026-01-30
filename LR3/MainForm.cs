@@ -114,5 +114,26 @@ namespace LR3
             labelIngredients.Text = "Ингредиенты:";
             pictureDish.Image = null;
         }
+        private void AddToOrder()
+        {
+            if (Group_dishesСomboBox.SelectedItem is Dish selectedDish) 
+            {
+                int quantity = (int)numericUpDownQuantity.Value;
+
+                currentOrder.Add(new OrderItem(selectedDish, quantity));
+
+                UpdateOrderInfo();
+
+                labelOrderStatus.Text = $"Добавлено: {selectedDish.nameDish_} x{quantity}";
+                labelOrderStatus.ForeColor = Color.Green;
+
+                UpdateOrderTextBox();
+            }
+            else
+            {
+                MessageBox.Show("Выберите блюдо из списка!", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

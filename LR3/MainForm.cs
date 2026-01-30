@@ -189,6 +189,54 @@ namespace LR3
                 textBoxOrder.AppendText(Environment.NewLine);
             }
         }
+        private void PlaceOrder()
+        {
+            if (currentOrder.Count == 0)
+            {
+                MessageBox.Show("Заказ пуст! Добавьте блюда.", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var summary = new Dictionary<string, int>();
+
+            foreach (var orderItem in currentOrder)
+            {
+
+                foreach (var group in dishesByGroup)
+                {
+                    if (group.Value.Contains(orderItem.Dish_))
+                    {
+                        if (!summary.ContainsKey(group.Key))
+                            summary[group.Key] = 0;
+
+                        summary[group.Key] += orderItem.Quantity_;
+                        break;
+                    }
+                }
+            }
+
+            string result = "Ваш заказ";
+            decimal totalPrice = 0;
+
+            foreach (var group in summary)
+            {
+                result += $"{group.Key}: {group.Value} позиций";
+            }
+
+            foreach (var item in currentOrder)
+            {
+                totalPrice += item.Dish_.priceDish_ * item.Quantity_;
+            }
+
+            result += $"Общая стоимость: {totalPrice} руб.";
+            result += $"Спасибо за заказ!";
+
+            MessageBox.Show(result, "Заказ оформлен",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            ClearOrder();
+        }
     }
  
 }

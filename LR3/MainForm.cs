@@ -12,6 +12,9 @@ namespace LR3
 {
     public partial class MainForm : Form
     {
+        private List<MenuGroup> menuGroups;
+        private Dictionary<string, List<MenuGroup>> dishesBygroup;
+        private 
         public MainForm()
         {
             InitializeComponent();
@@ -21,5 +24,7 @@ namespace LR3
         {
 
         }
+
+        
     }
 }

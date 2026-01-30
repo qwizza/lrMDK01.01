@@ -113,6 +113,33 @@ namespace LR3
             labelDescription.Text = $"Описание: {dish.descriptionDish_}";
             labelPrice.Text = $"Цена: {dish.priceDish_} руб.";
             labelIngredients.Text = $"Ингредиенты: {dish.ingredients_}";
+            LoadDishImage(dish.imagePath_);
+        }
+        private void LoadDishImage(string imagePath)
+        {
+            try
+            {
+                if (System.IO.File.Exists(imagePath))
+                {
+                    // ВОТ ТАК ИСПОЛЬЗУЕТСЯ LOAD()!
+                    pictureDish.Load(imagePath);
+                }
+                else
+                {
+                    // Если файл не найден
+                    pictureDish.Image = null;
+                    pictureDish.BackColor = Color.LightGray;
+                    pictureDish.CreateGraphics().DrawString("Нет изображения",
+                        new Font("Arial", 10), Brushes.Black, new PointF(10, 50));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Если ошибка загрузки
+                pictureDish.Image = null;
+                pictureDish.BackColor = Color.LightGray;
+                labelIngredients.Text += $"\n(Ошибка: {ex.Message})";
+            }
         }
         private void ClearDishInfo()
         {
@@ -121,6 +148,7 @@ namespace LR3
             labelPrice.Text = "Цена:";
             labelIngredients.Text = "Ингредиенты:";
             pictureDish.Image = null;
+            pictureDish.BackColor = SystemColors.Control;
         }
         private void AddToOrder()
         {

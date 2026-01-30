@@ -99,5 +99,14 @@ namespace LR3
                 }
             }
         }
+        private void ShowDishInfo(Dish dish)
+        {
+            labelDishName.Text = dish.nameDish_;
+            labelDescription.Text = $"Описание: {dish.descriptionDish_}";
+            labelPrice.Text = $"Цена: {dish.priceDish_} руб.";
+            labelIngredients.Text = $"Ингредиенты: {dish.ingredients_}";
+
+            
+        }
     }
 }

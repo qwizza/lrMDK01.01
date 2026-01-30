@@ -116,7 +116,7 @@ namespace LR3
         }
         private void AddToOrder()
         {
-            if (Group_dishesСomboBox.SelectedItem is Dish selectedDish) 
+            if (Group_dishesСomboBox.SelectedItem is Dish selectedDish)
             {
                 int quantity = (int)numericUpDownQuantity.Value;
 
@@ -134,6 +134,7 @@ namespace LR3
                 MessageBox.Show("Выберите блюдо из списка!", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
               private void UpdateOrderInfo()
         {
             if (currentOrder.Count == 0)
@@ -152,6 +153,42 @@ namespace LR3
             labelOrderStatus.Text = $"В заказе: {currentOrder.Count} позиций ({totalItems} шт.)";
             labelOrderStatus.ForeColor = Color.Blue;
         }
+        private void UpdateOrderTextBox()
+        {
+            textBoxOrder.Clear();
+
+            var orderByGroup = new Dictionary<string, List<OrderItem>>();
+
+            foreach (var orderItem in currentOrder)
+            {
+                string groupName = "";
+                foreach (var group in dishesByGroup)
+                {
+                    if (group.Value.Contains(orderItem.Dish_))
+                    {
+                        groupName = group.Key;
+                        break;
+                    }
+                }
+
+                if (!orderByGroup.ContainsKey(groupName))
+                    orderByGroup[groupName] = new List<OrderItem>();
+
+                orderByGroup[groupName].Add(orderItem);
+            }
+
+            foreach (var group in orderByGroup)
+            {
+                textBoxOrder.AppendText($"{group.Key}:" + Environment.NewLine);
+
+                foreach (var item in group.Value)
+                {
+                    textBoxOrder.AppendText($"  - {item.Dish_.nameDish_} x{item.Quantity_}" + Environment.NewLine);
+                }
+
+                textBoxOrder.AppendText(Environment.NewLine);
+            }
+        }
     }
-    }
+ 
 }

@@ -24,7 +24,7 @@ namespace LR3
             menuGroups.Add(new MenuGroup("Десерты", "Сладкие блюда"));
             menuGroups.Add(new MenuGroup("Напитки", "Холодные и горячие напитки"));
 
-            MenuListBox.DataSource = menuGroups;
+            MenuListBox.DataSource = menuGroups; 
             MenuListBox.DisplayMember = "name_";
 
             InitializeDishes();

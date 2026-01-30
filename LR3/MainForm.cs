@@ -105,8 +105,14 @@ namespace LR3
             labelDescription.Text = $"Описание: {dish.descriptionDish_}";
             labelPrice.Text = $"Цена: {dish.priceDish_} руб.";
             labelIngredients.Text = $"Ингредиенты: {dish.ingredients_}";
-
-            
+        }
+        private void ClearDishInfo()
+        {
+            labelDishName.Text = "Название блюда";
+            labelDescription.Text = "Описание блюда";
+            labelPrice.Text = "Цена:";
+            labelIngredients.Text = "Ингредиенты:";
+            pictureDish.Image = null;
         }
     }
 }

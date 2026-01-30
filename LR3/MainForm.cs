@@ -65,5 +65,28 @@ namespace LR3
 
             UpdateDishesComboBox();
         }
+        private void SetupEventHandlers()
+        {
+            MenuListBox.SelectedIndexChanged += (s, e) =>
+            {
+                UpdateDishesComboBox();
+                ClearDishInfo();
+            };
+            btnAddToOrder.Click += (s, e) =>
+            {
+                AddToOrder();
+            };
+
+            btnPlaceOrder.Click += (s, e) =>
+            {
+                PlaceOrder();
+            };
+
+            btnClearOrder.Click += (s, e) =>
+            {
+                ClearOrder();
+            };
+        }
+
     }
 }

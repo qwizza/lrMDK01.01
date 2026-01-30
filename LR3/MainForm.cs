@@ -134,6 +134,24 @@ namespace LR3
                 MessageBox.Show("Выберите блюдо из списка!", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+              private void UpdateOrderInfo()
+        {
+            if (currentOrder.Count == 0)
+            {
+                labelOrderStatus.Text = "Заказ пуст";
+                labelOrderStatus.ForeColor = Color.Black;
+                return;
+            }
+
+            int totalItems = 0;
+            foreach (var item in currentOrder)
+            {
+                totalItems += item.Quantity_;
+            }
+
+            labelOrderStatus.Text = $"В заказе: {currentOrder.Count} позиций ({totalItems} шт.)";
+            labelOrderStatus.ForeColor = Color.Blue;
         }
+    }
     }
 }

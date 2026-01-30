@@ -13,13 +13,15 @@ namespace LR3
         public string descriptionDish_ { get; set; }
         public int priceDish_ { get; set; }
         public string ingredients_ { get; set; }
-        
-        public Dish(string nameDish, string descriptionDish, int priceDish, string ingredients)
+        public string imagePath_ { get; set; }
+
+        public Dish(string nameDish, string descriptionDish, int priceDish, string ingredients, string imagePath)
         {
             nameDish_ = nameDish;
             descriptionDish_ = descriptionDish;
             priceDish_ = priceDish;
             ingredients_ = ingredients;
+            imagePath_ = imagePath;
 
         }
         public override string ToString()

@@ -62,6 +62,8 @@ namespace LR3
                 new Dish("Сок", "Апельсиновый сок", 120, "Апельсины")
             };
             dishesByGroup["Напитки"] = drinks;
+
+            UpdateDishesComboBox();
         }
     }
 }

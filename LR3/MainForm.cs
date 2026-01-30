@@ -33,33 +33,33 @@ namespace LR3
         {
             var soups = new List<Dish>
             {
-                new Dish("Борщ", "Красный борщ со сметаной", 250, "Свекла, капуста, мясо, сметана"),
-                new Dish("Куриный суп", "Легкий куриный суп", 200, "Курина, лапша, морковь, лук"),
-                new Dish("Солянка", "Густой мясной суп", 280, "Разные виды мяса, огурцы, оливки")
+                new Dish("Борщ", "Красный борщ со сметаной", 250, "Свекла, капуста, мясо, сметана", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\soup\\borsch.jpg"),
+                new Dish("Куриный суп", "Легкий куриный суп", 200, "Курина, лапша, морковь, лук", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\soup\\chicken_soup.jpg"),
+                new Dish("Солянка", "Густой мясной суп", 280, "Разные виды мяса, огурцы, оливки", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\soup\\solyanka.jpg")
             };
             dishesByGroup["Супы"] = soups;
 
             var mainDishes = new List<Dish>
             {
-                new Dish("Плов", "Узбекский плов", 350, "Рис, мясо, морковь, специи"),
-                new Dish("Котлеты с пюре", "Котлеты с картофельным пюре", 300, "Фарш, картофель, лук, молоко"),
-                new Dish("Стейк", "Стейк из говядины", 450, "Говядина, соль, перец, травы")
+                new Dish("Плов", "Узбекский плов", 350, "Рис, мясо, морковь, специи", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\mainDishes\\plov.jpg"),
+                new Dish("Котлеты с пюре", "Котлеты с картофельным пюре", 300, "Фарш, картофель, лук, молоко", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\mainDishes\\cutlets.jpg"),
+                new Dish("Стейк", "Стейк из говядины", 450, "Говядина, соль, перец, травы", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\mainDishes\\steak.jpg")
             };
             dishesByGroup["Основные блюда"] = mainDishes;
 
             var desserts = new List<Dish>
             {
-                new Dish("Торт Наполеон", "Слоеный торт с кремом", 180, "Тесто, крем, сахарная пудра"),
-                new Dish("Мороженое", "Ванильное мороженое", 120, "Молоко, сахар, ваниль"),
-                new Dish("Чизкейк", "Классический чизкейк", 220, "Сыр, печенье, сливки")
+                new Dish("Торт Наполеон", "Слоеный торт с кремом", 180, "Тесто, крем, сахарная пудра", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\desserts\\napoleon.jpg"),
+                new Dish("Мороженое", "Ванильное мороженое", 120, "Молоко, сахар, ваниль", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\desserts\\icecream.jpg"),
+                new Dish("Чизкейк", "Классический чизкейк", 220, "Сыр, печенье, сливки", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\desserts\\cheesecake.jpg")    
             };
             dishesByGroup["Десерты"] = desserts;
 
             var drinks = new List<Dish>
             {
-                new Dish("Кофе", "Свежемолотый кофе", 150, "Кофейные зерна, вода"),
-                new Dish("Чай", "Черный чай с лимоном", 100, "Чай, лимон, сахар"),
-                new Dish("Сок", "Апельсиновый сок", 120, "Апельсины")
+                new Dish("Кофе", "Свежемолотый кофе", 150, "Кофейные зерна, вода", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\drinks\\coffee.jpg"),
+                new Dish("Чай", "Черный чай с лимоном", 100, "Чай, лимон, сахар", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\drinks\\tea.jpg"),
+                new Dish("Сок", "Апельсиновый сок", 120, "Апельсины", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\drinks\\juice.jpg")
             };
             dishesByGroup["Напитки"] = drinks;
 

@@ -72,9 +72,9 @@
             // 
             // pictureDish
             // 
-            this.pictureDish.Location = new System.Drawing.Point(461, 3);
+            this.pictureDish.Location = new System.Drawing.Point(482, 3);
             this.pictureDish.Name = "pictureDish";
-            this.pictureDish.Size = new System.Drawing.Size(160, 136);
+            this.pictureDish.Size = new System.Drawing.Size(140, 140);
             this.pictureDish.TabIndex = 2;
             this.pictureDish.TabStop = false;
             // 

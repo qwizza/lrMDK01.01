@@ -67,6 +67,13 @@ namespace LR3
         }
         private void SetupEventHandlers()
         {
+            Group_dishesСomboBox.SelectedIndexChanged += (s, e) =>
+            {
+                if (Group_dishesСomboBox.SelectedItem is Dish selectedDish)
+                {
+                    ShowDishInfo(selectedDish);
+                }
+            };
             MenuListBox.SelectedIndexChanged += (s, e) =>
             {
                 UpdateDishesComboBox();
@@ -86,6 +93,7 @@ namespace LR3
             {
                 ClearOrder();
             };
+            
         }
         private void UpdateDishesComboBox() 
         {

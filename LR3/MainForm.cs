@@ -237,6 +237,13 @@ namespace LR3
 
             ClearOrder();
         }
+        private void ClearOrder()
+        {
+            currentOrder.Clear();
+            textBoxOrder.Clear();
+            UpdateOrderInfo();
+            numericUpDownQuantity.Value = 1;
+        }
     }
  
 }

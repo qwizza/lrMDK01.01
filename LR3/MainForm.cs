@@ -14,10 +14,15 @@ namespace LR3
     {
         private List<MenuGroup> menuGroups;
         private Dictionary<string, List<MenuGroup>> dishesBygroup;
-        private 
+        private Dictionary <Dish,int> orderdDish;
+        private Dish currentDish;
+        private Dictionary<string, Image> DishImage;
+
         public MainForm()
         {
             InitializeComponent();
+            
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)

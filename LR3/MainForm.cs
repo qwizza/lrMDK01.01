@@ -87,6 +87,17 @@ namespace LR3
                 ClearOrder();
             };
         }
-
+        private void UpdateDishesComboBox() 
+        {
+            if (MenuListBox.SelectedItem is MenuGroup selectedGroup) 
+            {
+                if (dishesByGroup.ContainsKey(selectedGroup.name_))
+                {
+                    Group_dishesСomboBox.DataSource = null;
+                    Group_dishesСomboBox.DataSource = dishesByGroup[selectedGroup.name_];
+                    Group_dishesСomboBox.DisplayMember = "nameDish_";
+                }
+            }
+        }
     }
 }

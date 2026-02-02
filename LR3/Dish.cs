@@ -1,32 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LR3
 {
     public class Dish
     {
-        public string nameDish_ { get; set; }
-        public string descriptionDish_ { get; set; }
-        public int priceDish_ { get; set; }
-        public string ingredients_ { get; set; }
-        public string imagePath_ { get; set; }
+        private string name_;
+        private int price_;
+        private string description_;
+        private string ingredients_;
+        private string imagePath_;
 
-        public Dish(string nameDish, string descriptionDish, int priceDish, string ingredients, string imagePath)
+        public Dish(string name, string description, int price, string ingredients, string imagePath)
         {
-            nameDish_ = nameDish;
-            descriptionDish_ = descriptionDish;
-            priceDish_ = priceDish;
+            name_ = name;
+            price_ = price;
+            description_ = description;
             ingredients_ = ingredients;
             imagePath_ = imagePath;
-
         }
-        public override string ToString()
+
+        public string Name
         {
-            return $"{nameDish_} - {priceDish_}";
+            get { return name_; }
+        }
+
+        public string Price
+        {
+            get { return price_.ToString("0") + " руб."; }
+        }
+
+        public string Description
+        {
+            get { return description_; }
+        }
+
+
+
+        public string Ingredients
+        {
+            get { return ingredients_; }
+        }
+
+        public string ImagePath
+        {
+            get { return imagePath_; }
         }
     }
 }

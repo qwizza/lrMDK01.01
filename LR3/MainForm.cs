@@ -99,10 +99,10 @@ namespace LR3
         {
             if (MenuListBox.SelectedItem is MenuGroup selectedGroup) 
             {
-                if (dishesByGroup.ContainsKey(selectedGroup.name_))
+                if (dishesByGroup.ContainsKey(selectedGroup.Name))
                 {
                     Group_dishesСomboBox.DataSource = null;
-                    Group_dishesСomboBox.DataSource = dishesByGroup[selectedGroup.name_];
+                    Group_dishesСomboBox.DataSource = dishesByGroup[selectedGroup.Name];
                     Group_dishesСomboBox.DisplayMember = "nameDish_";
                 }
             }

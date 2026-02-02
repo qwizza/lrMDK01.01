@@ -59,6 +59,7 @@
             this.Group_dishesСomboBox.Name = "Group_dishesСomboBox";
             this.Group_dishesСomboBox.Size = new System.Drawing.Size(624, 29);
             this.Group_dishesСomboBox.TabIndex = 0;
+            this.Group_dishesСomboBox.Text = "Блюда";
             // 
             // MenuListBox
             // 
@@ -114,6 +115,7 @@
             this.textBoxOrder.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxOrder.Size = new System.Drawing.Size(404, 66);
             this.textBoxOrder.TabIndex = 17;
+            this.textBoxOrder.Text = "Список заказа";
             // 
             // btnAddToOrder
             // 

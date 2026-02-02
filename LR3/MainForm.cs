@@ -1,285 +1,187 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace LR3
 {
     public partial class MainForm : Form
     {
-        private List<MenuGroup> menuGroups = new List<MenuGroup>();
-        private Dictionary<string, List<Dish>> dishesByGroup = new Dictionary<string, List<Dish>>();
-        private List<OrderItem> currentOrder = new List<OrderItem>();
+        private Dictionary<string, List<Dish>> dishes_ = new Dictionary<string, List<Dish>>();
+        private Dictionary<string, int> orderItems_ = new Dictionary<string, int>();
 
         public MainForm()
         {
             InitializeComponent();
-            InitializeMenuData();
-            SetupEventHandlers();
-        }
-        private void InitializeMenuData()
-        {
-            menuGroups.Add(new MenuGroup("Супы", "Горячие первые блюда"));
-            menuGroups.Add(new MenuGroup("Основные блюда", "Основные горячие блюда"));
-            menuGroups.Add(new MenuGroup("Десерты", "Сладкие блюда"));
-            menuGroups.Add(new MenuGroup("Напитки", "Холодные и горячие напитки"));
 
-            MenuListBox.DataSource = menuGroups;
-            MenuListBox.DisplayMember = "name_";
 
-            InitializeDishes();
-        }
-        private void InitializeDishes()
-        {
-            var soups = new List<Dish>
-            {
-                new Dish("Борщ", "Красный борщ со сметаной", 250, "Свекла, капуста, мясо, сметана", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\soup\\borsch.jpg"),
-                new Dish("Куриный суп", "Легкий куриный суп", 200, "Курина, лапша, морковь, лук", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\soup\\chicken_soup.jpg"),
-                new Dish("Солянка", "Густой мясной суп", 280, "Разные виды мяса, огурцы, оливки", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\soup\\solyanka.jpg")
-            };
-            dishesByGroup["Супы"] = soups;
+            MenuListBox.SelectedIndexChanged += CategoriesListBox_SelectedIndexChanged;
+            Group_dishesСomboBox.SelectedIndexChanged += DishesComboBox_SelectedIndexChanged;
+            btnAddToOrder.Click += AddToOrderButton_Click;
+            btnClearOrder.Click += ClearOrderButton_Click;
+            btnPlaceOrder.Click += PlaceOrderButton_Click;
 
-            var mainDishes = new List<Dish>
-            {
-                new Dish("Плов", "Узбекский плов", 350, "Рис, мясо, морковь, специи", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\mainDishes\\plov.jpg"),
-                new Dish("Котлеты с пюре", "Котлеты с картофельным пюре", 300, "Фарш, картофель, лук, молоко", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\mainDishes\\cutlets.jpg"),
-                new Dish("Стейк", "Стейк из говядины", 450, "Говядина, соль, перец, травы", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\mainDishes\\steak.jpg")
-            };
-            dishesByGroup["Основные блюда"] = mainDishes;
-
-            var desserts = new List<Dish>
-            {
-                new Dish("Торт Наполеон", "Слоеный торт с кремом", 180, "Тесто, крем, сахарная пудра", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\desserts\\napoleon.jpg"),
-                new Dish("Мороженое", "Ванильное мороженое", 120, "Молоко, сахар, ваниль", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\desserts\\icecream.jpg"),
-                new Dish("Чизкейк", "Классический чизкейк", 220, "Сыр, печенье, сливки", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\desserts\\cheesecake.jpg")    
-            };
-            dishesByGroup["Десерты"] = desserts;
-
-            var drinks = new List<Dish>
-            {
-                new Dish("Кофе", "Свежемолотый кофе", 150, "Кофейные зерна, вода", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\drinks\\coffee.jpg"),
-                new Dish("Чай", "Черный чай с лимоном", 100, "Чай, лимон, сахар", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\drinks\\tea.jpg"),
-                new Dish("Сок", "Апельсиновый сок", 120, "Апельсины", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\drinks\\juice.jpg")
-            };
-            dishesByGroup["Напитки"] = drinks;
-
-            UpdateDishesComboBox();
-        }
-        private void SetupEventHandlers()
-        {
-            Group_dishesСomboBox.SelectedIndexChanged += (s, e) =>
-            {
-                if (Group_dishesСomboBox.SelectedItem is Dish selectedDish)
-                {
-                    ShowDishInfo(selectedDish);
+            dishes_.Add("Супы",
+            new List<Dish>() {
+                    new Dish("Борщ", "Красный борщ со сметаной", 250, "Свекла, капуста, мясо, сметана", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\soup\\borsch.jpg"),
+                    new Dish("Куриный суп", "Легкий куриный суп", 200, "Курина, лапша, морковь, лук", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\soup\\chicken_soup.jpg"),
+                    new Dish("Солянка", "Густой мясной суп", 280, "Разные виды мяса, огурцы, оливки", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\soup\\solyanka.jpg")  }
+        );
+            dishes_.Add("Основные блюда",
+                new List<Dish>() {
+                    new Dish("Плов", "Узбекский плов", 350, "Рис, мясо, морковь, специи", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\mainDishes\\plov.jpg"),
+                    new Dish("Котлеты с пюре", "Котлеты с картофельным пюре", 300, "Фарш, картофель, лук, молоко", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\mainDishes\\cutlets.jpg"),
+                    new Dish("Стейк", "Стейк из говядины", 450, "Говядина, соль, перец, травы", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\mainDishes\\steak.jpg")
                 }
-            };
-            MenuListBox.SelectedIndexChanged += (s, e) =>
-            {
-                UpdateDishesComboBox();
-                ClearDishInfo();
-            };
-            btnAddToOrder.Click += (s, e) =>
-            {
-                AddToOrder();
-            };
-
-            btnPlaceOrder.Click += (s, e) =>
-            {
-                PlaceOrder();
-            };
-
-            btnClearOrder.Click += (s, e) =>
-            {
-                ClearOrder();
-            };
-            
-        }
-        private void UpdateDishesComboBox() 
-        {
-            if (MenuListBox.SelectedItem is MenuGroup selectedGroup) 
-            {
-                if (dishesByGroup.ContainsKey(selectedGroup.Name))
-                {
-                    Group_dishesСomboBox.DataSource = null;
-                    Group_dishesСomboBox.DataSource = dishesByGroup[selectedGroup.Name];
-                    Group_dishesСomboBox.DisplayMember = "nameDish_";
+            );
+            dishes_.Add("Десерты",
+                new List<Dish>() {
+                    new Dish("Торт Наполеон", "Слоеный торт с кремом", 180, "Тесто, крем, сахарная пудра", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\desserts\\napoleon.jpg"),
+                    new Dish("Мороженое", "Ванильное мороженое", 120, "Молоко, сахар, ваниль", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\desserts\\icecream.jpg"),
+                    new Dish("Чизкейк", "Классический чизкейк", 220, "Сыр, печенье, сливки", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\desserts\\cheesecake.jpg")
                 }
+            );
+            dishes_.Add("Напитки",
+                new List<Dish>() {
+                    new Dish("Кофе", "Свежемолотый кофе", 150, "Кофейные зерна, вода", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\drinks\\coffee.jpg"),
+                    new Dish("Чай", "Черный чай с лимоном", 100, "Чай, лимон, сахар", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\drinks\\tea.jpg"),
+                    new Dish("Сок", "Апельсиновый сок", 120, "Апельсины", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\drinks\\juice.jpg")
+                }
+            );
+
+            List<string> allCategories = dishes_.Keys.ToList();
+            MenuListBox.DataSource = allCategories;
+        }
+
+        private void CategoriesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedCategory = MenuListBox.SelectedItem.ToString();
+            List<Dish> dishesInCategory = dishes_[selectedCategory];
+            Group_dishesСomboBox.DataSource = dishesInCategory;
+            Group_dishesСomboBox.DisplayMember = "Name";
+        }
+
+        private void DishesComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Dish selectedDish = Group_dishesСomboBox.SelectedItem as Dish;
+            if (selectedDish != null)
+            {
+                labelPrice.Text = selectedDish.Price + " руб.";
+                labelDescription.Text = selectedDish.Description;
+                labelIngredients.Text = selectedDish.Ingredients;
+                pictureDish.Load(selectedDish.ImagePath);
+
+
             }
         }
-        private void ShowDishInfo(Dish dish)
+
+        private void AddToOrderButton_Click(object sender, EventArgs e)
         {
-            labelDishName.Text = dish.nameDish_;
-            labelDescription.Text = $"Описание: {dish.descriptionDish_}";
-            labelPrice.Text = $"Цена: {dish.priceDish_} руб.";
-            labelIngredients.Text = $"Ингредиенты: {dish.ingredients_}";
-            LoadDishImage(dish.imagePath_);
-        }
-        private void LoadDishImage(string imagePath)
-        {
-            try
+            Dish selectedDish = Group_dishesСomboBox.SelectedItem as Dish;
+            if (selectedDish != null)
             {
-                if (System.IO.File.Exists(imagePath))
+                string dishName = selectedDish.Name;
+                int quantity = (int)numericUpDownQuantity.Value;
+
+                if (orderItems_.ContainsKey(dishName))
                 {
-                    // ВОТ ТАК ИСПОЛЬЗУЕТСЯ LOAD()!
-                    pictureDish.Load(imagePath);
+                    orderItems_[dishName] += quantity;
                 }
                 else
                 {
-                    // Если файл не найден
-                    pictureDish.Image = null;
-                    pictureDish.BackColor = Color.LightGray;
-                    pictureDish.CreateGraphics().DrawString("Нет изображения",
-                        new Font("Arial", 10), Brushes.Black, new PointF(10, 50));
+                    orderItems_[dishName] = quantity;
                 }
-            }
-            catch (Exception ex)
-            {
-                // Если ошибка загрузки
-                pictureDish.Image = null;
-                pictureDish.BackColor = Color.LightGray;
-                labelIngredients.Text += $"\n(Ошибка: {ex.Message})";
+
+                UpdateOrderDisplay();
+                ShowOrderConfirmation(dishName, quantity);
             }
         }
-        private void ClearDishInfo()
+
+        private void UpdateOrderDisplay()
         {
-            labelDishName.Text = "Название блюда";
-            labelDescription.Text = "Описание блюда";
-            labelPrice.Text = "Цена:";
-            labelIngredients.Text = "Ингредиенты:";
-            pictureDish.Image = null;
-            pictureDish.BackColor = SystemColors.Control;
-        }
-        private void AddToOrder()
-        {
-            if (Group_dishesСomboBox.SelectedItem is Dish selectedDish)
+            string orderText = "Ваш заказ:\n\n";
+            int totalPrice = 0;
+
+            foreach (var item in orderItems_)
             {
-                int quantity = (int)numericUpDownQuantity.Value;
-
-                currentOrder.Add(new OrderItem(selectedDish, quantity));
-
-                UpdateOrderInfo();
-
-                labelOrderStatus.Text = $"Добавлено: {selectedDish.nameDish_} x{quantity}";
-                labelOrderStatus.ForeColor = Color.Green;
-
-                UpdateOrderTextBox();
-            }
-            else
-            {
-                MessageBox.Show("Выберите блюдо из списка!", "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-              private void UpdateOrderInfo()
-        {
-            if (currentOrder.Count == 0)
-            {
-                labelOrderStatus.Text = "Заказ пуст";
-                labelOrderStatus.ForeColor = Color.Black;
-                return;
-            }
-
-            int totalItems = 0;
-            foreach (var item in currentOrder)
-            {
-                totalItems += item.Quantity_;
-            }
-
-            labelOrderStatus.Text = $"В заказе: {currentOrder.Count} позиций ({totalItems} шт.)";
-            labelOrderStatus.ForeColor = Color.Blue;
-        }
-        private void UpdateOrderTextBox()
-        {
-            textBoxOrder.Clear();
-
-            var orderByGroup = new Dictionary<string, List<OrderItem>>();
-
-            foreach (var orderItem in currentOrder)
-            {
-                string groupName = "";
-                foreach (var group in dishesByGroup)
+                Dish dish = null;
+                foreach (var category in dishes_.Values)
                 {
-                    if (group.Value.Contains(orderItem.Dish_))
-                    {
-                        groupName = group.Key;
-                        break;
-                    }
+                    dish = category.FirstOrDefault(d => d.Name == item.Key);
+                    if (dish != null) break;
                 }
 
-                if (!orderByGroup.ContainsKey(groupName))
-                    orderByGroup[groupName] = new List<OrderItem>();
-
-                orderByGroup[groupName].Add(orderItem);
-            }
-
-            foreach (var group in orderByGroup)
-            {
-                textBoxOrder.AppendText($"{group.Key}:" + Environment.NewLine);
-
-                foreach (var item in group.Value)
+                if (dish != null)
                 {
-                    textBoxOrder.AppendText($"  - {item.Dish_.nameDish_} x{item.Quantity_}" + Environment.NewLine);
+                    int itemTotal = int.Parse(dish.Price.Replace(" руб.", "")) * item.Value;
+                    totalPrice += itemTotal;
+                    orderText += $"{item.Key}: {item.Value} шт. - {itemTotal} руб.\n";
                 }
-
-                textBoxOrder.AppendText(Environment.NewLine);
             }
+
+            orderText += $"Итого: {totalPrice} руб.";
+            textBoxOrder.Text = orderText;
         }
-        private void PlaceOrder()
+
+        private void ShowOrderConfirmation(string dishName, int quantity)
         {
-            if (currentOrder.Count == 0)
+            MessageBox.Show($"Добавлено: {dishName} x{quantity}\nПродолжайте выбирать блюда!",
+                "Добавлено в заказ",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+
+        private void PlaceOrderButton_Click(object sender, EventArgs e)
+        {
+            if (orderItems_.Count == 0)
             {
                 MessageBox.Show("Заказ пуст! Добавьте блюда.", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            var summary = new Dictionary<string, int>();
+            string orderSummary = "Ваш заказ оформлен!";
+            decimal totalPrice = 0;
 
-            foreach (var orderItem in currentOrder)
+            foreach (var item in orderItems_)
             {
-
-                foreach (var group in dishesByGroup)
+                Dish dish = null;
+                foreach (var category in dishes_.Values)
                 {
-                    if (group.Value.Contains(orderItem.Dish_))
-                    {
-                        if (!summary.ContainsKey(group.Key))
-                            summary[group.Key] = 0;
+                    dish = category.FirstOrDefault(d => d.Name == item.Key);
+                    if (dish != null) break;
+                }
 
-                        summary[group.Key] += orderItem.Quantity_;
-                        break;
-                    }
+                if (dish != null)
+                {
+                    decimal itemTotal = int.Parse(dish.Price.Replace(" руб.", "")) * item.Value;
+                    totalPrice += itemTotal;
+                    orderSummary += $"{item.Key}: {item.Value} шт. - {itemTotal} руб.\n";
                 }
             }
 
-            string result = "Ваш заказ";
-            decimal totalPrice = 0;
+            orderSummary += $"Общая стоимость: {totalPrice} руб.";
+            orderSummary += "Спасибо за заказ! Приятного аппетита!";
 
-            foreach (var group in summary)
-            {
-                result += $"{group.Key}: {group.Value} позиций";
-            }
-
-            foreach (var item in currentOrder)
-            {
-                totalPrice += item.Dish_.priceDish_ * item.Quantity_;
-            }
-
-            result += $"Общая стоимость: {totalPrice} руб.";
-            result += $"Спасибо за заказ!";
-
-            MessageBox.Show(result, "Заказ оформлен",
+            MessageBox.Show(orderSummary, "Заказ оформлен",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             ClearOrder();
         }
+
+        private void ClearOrderButton_Click(object sender, EventArgs e)
+        {
+            ClearOrder();
+        }
+
         private void ClearOrder()
         {
-            currentOrder.Clear();
+            orderItems_.Clear();
             textBoxOrder.Clear();
-            UpdateOrderInfo();
             numericUpDownQuantity.Value = 1;
+            MessageBox.Show("Заказ очищен", "Информация",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
- 
 }

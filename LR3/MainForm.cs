@@ -120,7 +120,7 @@ namespace LR3
                 }
             }
 
-            orderText += $"Итого: {totalPrice} руб.";
+            orderText += $"\nИтого: {totalPrice} руб.";
             textBoxOrder.Text = orderText;
         }
 
@@ -141,7 +141,7 @@ namespace LR3
                 return;
             }
 
-            string orderSummary = "Ваш заказ оформлен!";
+            string orderSummary = "Ваш заказ оформлен!\n\n";
             decimal totalPrice = 0;
 
             foreach (var item in orderItems_)
@@ -161,8 +161,8 @@ namespace LR3
                 }
             }
 
-            orderSummary += $"Общая стоимость: {totalPrice} руб.";
-            orderSummary += "Спасибо за заказ! Приятного аппетита!";
+            orderSummary += $"\nОбщая стоимость: {totalPrice} руб.";
+            orderSummary += "\n\nСпасибо за заказ! Приятного аппетита!";
 
             MessageBox.Show(orderSummary, "Заказ оформлен",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);

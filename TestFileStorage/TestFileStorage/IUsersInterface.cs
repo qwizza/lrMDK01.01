@@ -9,5 +9,9 @@ namespace TestFileStorage
     interface IUsersInterface
     {
         List<User> Load();
+
+        bool CheckUser(string User);
+
+        bool AddUser(User user);
     }
 }

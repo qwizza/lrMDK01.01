@@ -13,23 +13,27 @@ namespace TestFileStorage
     {
         public bool AddUser(User user)
         {
+            if (CheckUser(user.Login))
+                return false;
+
             using (StreamWriter writer = new StreamWriter("TestFileStorage.txt"))
             {
-                
+                writer.WriteLine($"{user.Login}-{user.Password}");
             }
+            return true;
         }
-
-        public bool CheckUser(string User)
+         
+        public bool CheckUser(string login)
         {
-            List<User> user = Load();
-            foreach(User user in user)
+            List<User> users = Load();
+            foreach(User user in users)
             {
-                if (User == user.Login)
+                if (login == user.Login)
                 {
                     return true;
                 }
-                return false;
             }
+                return false;
         }
 
         public List<User> Load()

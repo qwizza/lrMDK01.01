@@ -105,6 +105,7 @@
             this.panelOrder.Name = "panelOrder";
             this.panelOrder.Size = new System.Drawing.Size(624, 228);
             this.panelOrder.TabIndex = 4;
+           
             // 
             // textBoxOrder
             // 

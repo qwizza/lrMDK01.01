@@ -22,36 +22,36 @@ namespace LR3
             btnClearOrder.Click += ClearOrderButton_Click;
             btnPlaceOrder.Click += PlaceOrderButton_Click;
 
-           /* dishes_.Add("Супы",
+            dishes_.Add("Супы",
             new List<Dish>() {
-                    new Dish("Борщ", "Красный борщ со сметаной", 250, "Свекла, капуста, мясо, сметана", "C:\\reposit\\LR3\\soup\\borsch.jpg"),
-                    new Dish("Куриный суп", "Легкий куриный суп", 200, "Курина, лапша, морковь, лук", "C:\\reposit\\LR3\\soup\\chicken_soup.jpg"),
-                    new Dish("Солянка", "Густой мясной суп", 280, "Разные виды мяса, огурцы, оливки", "C:\\reposit\\LR3\\soup\\solyanka.jpg")  }
+                    new Dish("Борщ", "Красный борщ со сметаной", 250, "Свекла, капуста, мясо, сметана", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\soup\\borsch.jpg"),
+                    new Dish("Куриный суп", "Легкий куриный суп", 200, "Курина, лапша, морковь, лук", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\soup\\chicken_soup.jpg"),
+                    new Dish("Солянка", "Густой мясной суп", 280, "Разные виды мяса, огурцы, оливки", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\soup\\solyanka.jpg")  }
         );
             dishes_.Add("Основные блюда",
                 new List<Dish>() {
-                    new Dish("Плов", "Узбекский плов", 350, "Рис, мясо, морковь, специи", "C:\\reposit\\LR3\\mainDishes\\plov.jpg"),
-                    new Dish("Котлеты с пюре", "Котлеты с картофельным пюре", 300, "Фарш, картофель, лук, молоко", "C:\\reposit\\LR3\\mainDishes\\cutlets.jpg"),
-                    new Dish("Стейк", "Стейк из говядины", 450, "Говядина, соль, перец, травы", "C:\\reposit\\LR3\\mainDishes\\steak.jpg")
+                    new Dish("Плов", "Узбекский плов", 350, "Рис, мясо, морковь, специи", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\mainDishes\\plov.jpg"),
+                    new Dish("Котлеты с пюре", "Котлеты с картофельным пюре", 300, "Фарш, картофель, лук, молоко", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\mainDishes\\cutlets.jpg"),
+                    new Dish("Стейк", "Стейк из говядины", 450, "Говядина, соль, перец, травы", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\mainDishes\\steak.jpg")
                 }
             );
             dishes_.Add("Десерты",
                 new List<Dish>() {
-                    new Dish("Торт Наполеон", "Слоеный торт с кремом", 480, "Тесто, крем, сахарная пудра", "C:\\reposit\\LR3\\desserts\\napoleon.jpg"),
-                    new Dish("Мороженое", "Ванильное мороженое", 120, "Молоко, сахар, ваниль", "C:\\reposit\\LR3\\desserts\\icecream.jpg"),
-                    new Dish("Чизкейк", "Классический чизкейк", 220, "Сыр, печенье, сливки", "C:\\reposit\\LR3\\desserts\\cheesecake.jpg")
+                    new Dish("Торт Наполеон", "Слоеный торт с кремом", 480, "Тесто, крем, сахарная пудра", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\desserts\\napoleon.jpg"),
+                    new Dish("Мороженое", "Ванильное мороженое", 120, "Молоко, сахар, ваниль", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\desserts\\icecream.jpg"),
+                    new Dish("Чизкейк", "Классический чизкейк", 220, "Сыр, печенье, сливки", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\desserts\\cheesecake.jpg")
                 }
             );
             dishes_.Add("Напитки",
                 new List<Dish>() {
-                    new Dish("Кофе", "Свежемолотый кофе", 50, "Кофейные зерна, вода", "C:\\reposit\\LR3\\drinks\\coffee.jpg"),
-                    new Dish("Чай", "Черный чай с лимоном", 20, "Чай, лимон, сахар", "C:\\reposit\\LR3\\drinks\\tea.jpg"),
-                    new Dish("Сок", "Апельсиновый сок", 70, "Апельсины", "C:\\reposit\\LR3\\drinks\\juice.jpg")
+                    new Dish("Кофе", "Свежемолотый кофе", 50, "Кофейные зерна, вода", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\drinks\\coffee.jpg"),
+                    new Dish("Чай", "Черный чай с лимоном", 20, "Чай, лимон, сахар", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\drinks\\tea.jpg"),
+                    new Dish("Сок", "Апельсиновый сок", 70, "Апельсины", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\drinks\\juice.jpg")
                 }
             );
 
             List<string> allCategories = dishes_.Keys.ToList();
-            MenuListBox.DataSource = allCategories;*/
+            MenuListBox.DataSource = allCategories;
         }
 
         private void CategoriesListBox_SelectedIndexChanged(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace GueesTheNumber
 {
     partial class Number
     {
@@ -32,8 +32,8 @@
             this.MessangeBoxNumber = new System.Windows.Forms.RichTextBox();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.Text = new System.Windows.Forms.TextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.TextNumbers = new System.Windows.Forms.TextBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.timerLabel = new System.Windows.Forms.Label();
             this.CheckButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -49,15 +49,16 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.CalendarTrailingForeColor = System.Drawing.SystemColors.ControlText;
+            this.dateTimePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateTimePicker.CustomFormat = "MM:ss";
             this.dateTimePicker.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimePicker.Location = new System.Drawing.Point(87, 21);
-            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(200, 29);
-            this.dateTimePicker.TabIndex = 2;
-            this.dateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
+            this.dateTimePicker.Size = new System.Drawing.Size(205, 29);
+            this.dateTimePicker.TabIndex = 4;
+            this.dateTimePicker.Value = new System.DateTime(2026, 2, 6, 0, 0, 0, 0);
             // 
             // label2
             // 
@@ -69,18 +70,19 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Введите число от 1 до 100:";
             // 
-            // Text
+            // TextNumbers
             // 
-            this.Text.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Text.Location = new System.Drawing.Point(315, 69);
-            this.Text.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Text.Name = "Text";
-            this.Text.Size = new System.Drawing.Size(131, 29);
-            this.Text.TabIndex = 4;
+            this.TextNumbers.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextNumbers.Location = new System.Drawing.Point(315, 69);
+            this.TextNumbers.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TextNumbers.Name = "TextNumbers";
+            this.TextNumbers.Size = new System.Drawing.Size(131, 29);
+            this.TextNumbers.TabIndex = 4;
             // 
-            // timer1
+            // timer
             // 
-            this.timer1.Interval = 1000;
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick_1);
             // 
             // timerLabel
             // 
@@ -111,7 +113,7 @@
             this.ClientSize = new System.Drawing.Size(604, 279);
             this.Controls.Add(this.CheckButton);
             this.Controls.Add(this.timerLabel);
-            this.Controls.Add(this.Text);
+            this.Controls.Add(this.TextNumbers);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.MessangeBoxNumber);
@@ -127,8 +129,8 @@
         private System.Windows.Forms.RichTextBox MessangeBoxNumber;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox Text;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox TextNumbers;
+        private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Label timerLabel;
         private System.Windows.Forms.Button CheckButton;
     }

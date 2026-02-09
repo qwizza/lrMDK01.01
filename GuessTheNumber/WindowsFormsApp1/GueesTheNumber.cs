@@ -9,58 +9,58 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace GueesTheNumber
 {
     public partial class Number : Form
     {
-        int timeLeft = 30; 
-        Timer timer;
         int NextRun_;
+        private int seccondNow_;
+        private int attempt_;
+
         public Number()
         {
             InitializeComponent();
-
-            dateTimePicker.Value = DateTime.Today.AddSeconds(30);
-
-            
-            timer = new Timer();
-            timer.Interval = 1000; 
-            timer.Tick += dateTimePicker_ValueChanged;
-            timer.Start();
-
             Random random = new Random();
-            NextRun_ = random.Next(1, 101);
+            NextRun_ = random.Next(1, 101); 
+            timer.Start();
+            seccondNow_ = 0;
+            dateTimePicker.Value = new DateTime(2025, 01, 01, 0, 1, 0).AddSeconds(-seccondNow_);
         }
 
         private void Check(object sender, EventArgs e)
         {
-            int anInteger = Convert.ToInt32(Text.Text);
-
-            if (NextRun_ > anInteger)
+            attempt_++;
+            int anInteger = Convert.ToInt32(TextNumbers.Text);
+            if (anInteger == NextRun_)
             {
-                MessageBox.Show("Введеное число меньше!");
-            }
-            else if (NextRun_ < anInteger) 
-            {
-                MessageBox.Show("Введеное число больше!");
-            }
-            else
-            {
+                timer.Stop();
                 MessageBox.Show("Вы угадали!");
+                MessangeBoxNumber.AppendText($"Попытка номер: {attempt_}. Ваше число: {TextNumbers.Text}\nВы угадали за {seccondNow_} секунд(ы/у) \n");
+            }
+            else if (anInteger > NextRun_)
+            {
+                MessageBox.Show("Загаданное число меньше!");
+                MessangeBoxNumber.AppendText($"Попытка номер: {attempt_}. Ваше число: {TextNumbers.Text}. Нужно число меньше \n");
+            }
+            else if (anInteger < NextRun_)
+            {
+                MessageBox.Show("Загаданное число больше!");
+                MessangeBoxNumber.AppendText($"Попытка номер: {attempt_}. Ваше число: {TextNumbers.Text}. Нужно число больше \n");
             }
         }
 
-        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
+        private void timer_Tick_1(object sender, EventArgs e)
         {
-            timeLeft--; 
-
-            dateTimePicker.Value = DateTime.Today.AddSeconds(timeLeft);
-
-            if (timeLeft <= 0)
+            seccondNow_++;
+            dateTimePicker.Value = new DateTime(2025, 01, 01, 0, 1, 0).AddSeconds(-seccondNow_);
+            if (seccondNow_ >= 60)
             {
                 timer.Stop();
-                MessageBox.Show("Время вышло!");
+                MessageBox.Show("Ваше время вышло!\n  Вы проиграли!");
+                Application.Exit();
             }
         }
     }
 }
+
+    

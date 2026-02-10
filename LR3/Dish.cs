@@ -2,7 +2,7 @@
 
 namespace LR3
 {
-    public class Dish
+    public class Dishs
     {
         private string name_;
         private int price_;
@@ -10,10 +10,13 @@ namespace LR3
         private string ingredients_;
         private string imagePath_;
 
-        public Dish(string name, string description, int price, string ingredients, string imagePath)
+        public Dishs(string name, string description, string price, string ingredients, string imagePath)
         {
             name_ = name;
-            price_ = price;
+            if (!int.TryParse(price, out price_))
+            {
+                price_ = 0;
+            }
             description_ = description;
             ingredients_ = ingredients;
             imagePath_ = imagePath;
@@ -33,8 +36,6 @@ namespace LR3
         {
             get { return description_; }
         }
-
-
 
         public string Ingredients
         {

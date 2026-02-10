@@ -8,8 +8,9 @@ namespace LR3
 {
     public partial class MainForm : Form
     {
-        private Dictionary<string, List<Dish>> dishes_ = new Dictionary<string, List<Dish>>();
+        private Dictionary<string, List<Dishs>> dishes_ = new Dictionary<string, List<Dishs>>();
         private Dictionary<string, int> orderItems_ = new Dictionary<string, int>();
+        private FileDishStorage fileDishStorage = new FileDishStorage();
 
         public MainForm()
         {
@@ -22,34 +23,7 @@ namespace LR3
             btnClearOrder.Click += ClearOrderButton_Click;
             btnPlaceOrder.Click += PlaceOrderButton_Click;
 
-            dishes_.Add("Супы",
-            new List<Dish>() {
-                    new Dish("Борщ", "Красный борщ со сметаной", 250, "Свекла, капуста, мясо, сметана", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\soup\\borsch.jpg"),
-                    new Dish("Куриный суп", "Легкий куриный суп", 200, "Курина, лапша, морковь, лук", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\soup\\chicken_soup.jpg"),
-                    new Dish("Солянка", "Густой мясной суп", 280, "Разные виды мяса, огурцы, оливки", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\soup\\solyanka.jpg")  }
-        );
-            dishes_.Add("Основные блюда",
-                new List<Dish>() {
-                    new Dish("Плов", "Узбекский плов", 350, "Рис, мясо, морковь, специи", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\mainDishes\\plov.jpg"),
-                    new Dish("Котлеты с пюре", "Котлеты с картофельным пюре", 300, "Фарш, картофель, лук, молоко", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\mainDishes\\cutlets.jpg"),
-                    new Dish("Стейк", "Стейк из говядины", 450, "Говядина, соль, перец, травы", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\mainDishes\\steak.jpg")
-                }
-            );
-            dishes_.Add("Десерты",
-                new List<Dish>() {
-                    new Dish("Торт Наполеон", "Слоеный торт с кремом", 480, "Тесто, крем, сахарная пудра", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\desserts\\napoleon.jpg"),
-                    new Dish("Мороженое", "Ванильное мороженое", 120, "Молоко, сахар, ваниль", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\desserts\\icecream.jpg"),
-                    new Dish("Чизкейк", "Классический чизкейк", 220, "Сыр, печенье, сливки", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\desserts\\cheesecake.jpg")
-                }
-            );
-            dishes_.Add("Напитки",
-                new List<Dish>() {
-                    new Dish("Кофе", "Свежемолотый кофе", 50, "Кофейные зерна, вода", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\drinks\\coffee.jpg"),
-                    new Dish("Чай", "Черный чай с лимоном", 20, "Чай, лимон, сахар", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\drinks\\tea.jpg"),
-                    new Dish("Сок", "Апельсиновый сок", 70, "Апельсины", "C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\drinks\\juice.jpg")
-                }
-            );
-
+            dishes_ = fileDishStorage.LoadDataFromCsv();
             List<string> allCategories = dishes_.Keys.ToList();
             MenuListBox.DataSource = allCategories;
         }
@@ -57,28 +31,27 @@ namespace LR3
         private void CategoriesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedCategory = MenuListBox.SelectedItem.ToString();
-            List<Dish> dishesInCategory = dishes_[selectedCategory];
+            List<Dishs> dishesInCategory = dishes_[selectedCategory];
             Group_dishesСomboBox.DataSource = dishesInCategory;
             Group_dishesСomboBox.DisplayMember = "Name";
         }
 
         private void DishesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Dish selectedDish = Group_dishesСomboBox.SelectedItem as Dish;
+            Dishs selectedDish = Group_dishesСomboBox.SelectedItem as Dishs;
             if (selectedDish != null)
             {
+                labelDishName.Text = selectedDish.Name;
                 labelPrice.Text = selectedDish.Price + " руб.";
                 labelDescription.Text = selectedDish.Description;
                 labelIngredients.Text = selectedDish.Ingredients;
                 pictureDish.Load(selectedDish.ImagePath);
-
-
             }
         }
 
         private void AddToOrderButton_Click(object sender, EventArgs e)
         {
-            Dish selectedDish = Group_dishesСomboBox.SelectedItem as Dish;
+            Dishs selectedDish = Group_dishesСomboBox.SelectedItem as Dishs;
             if (selectedDish != null)
             {
                 string dishName = selectedDish.Name;
@@ -105,7 +78,7 @@ namespace LR3
 
             foreach (var item in orderItems_)
             {
-                Dish dish = null;
+                Dishs dish = null;
                 foreach (var category in dishes_.Values)
                 {
                     dish = category.FirstOrDefault(d => d.Name == item.Key);
@@ -146,7 +119,7 @@ namespace LR3
 
             foreach (var item in orderItems_)
             {
-                Dish dish = null;
+                Dishs dish = null;
                 foreach (var category in dishes_.Values)
                 {
                     dish = category.FirstOrDefault(d => d.Name == item.Key);

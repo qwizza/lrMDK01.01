@@ -14,7 +14,7 @@ namespace LR3
         {
             Dictionary<string, List<Dishs>> result = new Dictionary<string, List<Dishs>>();
 
-            using (StreamReader reader = new StreamReader("C:\\Users\\zhesmik\\source\\repos\\lrMDK01.01\\LR3\\bin\\Debug\\data.csv"))
+            using (StreamReader reader = new StreamReader("data.csv"))
             {
                 reader.ReadLine();
 

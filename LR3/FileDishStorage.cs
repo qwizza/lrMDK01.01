@@ -21,14 +21,14 @@ namespace LR3
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    string[] drugInfo = line.Split(';');
+                    string[] dishInfo = line.Split(';');
 
-                    string category = drugInfo[0];
-                    string name = drugInfo[1];
-                    string description = drugInfo[2];
-                    string price = drugInfo[3];
-                    string ingredients = drugInfo[4];
-                    string imagePath = drugInfo[5];
+                    string category = dishInfo[0];
+                    string name = dishInfo[1];
+                    string description = dishInfo[2];
+                    string price = dishInfo[3];
+                    string ingredients = dishInfo[4];
+                    string imagePath = dishInfo[5];
 
                     Dishs dish = new Dishs(name, description, price, ingredients, imagePath);
 

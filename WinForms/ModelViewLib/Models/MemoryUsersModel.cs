@@ -17,6 +17,18 @@ namespace ModelViewLib.Models
             users_.Add(new User("Spring", "789", "Весна"));
             users_.Add(new User("Summer", "012", "Лето"));
         }
+
+        public bool AddUser(User user)
+        {
+            int count = users_.Count;
+            users_.Add(user);
+            if (users_.Count == count + 1)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public List<User> LoadData()
         {
             return users_;
@@ -42,6 +54,11 @@ namespace ModelViewLib.Models
                     users_.RemoveAt(targetIndex);
                 }
             }
+        }
+
+        public List<User> UpUserData()
+        {
+            return users_;
         }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinForms
+namespace WindowsFormsApp1
 {
-    internal static class Program
+    static class Program
     {
         /// <summary>
         /// Главная точка входа для приложения.
@@ -16,8 +16,7 @@ namespace WinForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
-           
+            Application.Run(new Form1());
         }
     }
 }

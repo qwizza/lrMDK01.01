@@ -31,6 +31,7 @@
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.deleteButt = new System.Windows.Forms.Button();
             this.addButt = new System.Windows.Forms.Button();
+            this.Clear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,12 +61,24 @@
             this.addButt.TabIndex = 2;
             this.addButt.Text = "Добавить";
             this.addButt.UseVisualStyleBackColor = true;
+            this.addButt.Click += new System.EventHandler(this.addButt_Click);
+            // 
+            // Clear
+            // 
+            this.Clear.Location = new System.Drawing.Point(563, 339);
+            this.Clear.Name = "Clear";
+            this.Clear.Size = new System.Drawing.Size(75, 23);
+            this.Clear.TabIndex = 3;
+            this.Clear.Text = "Очистить";
+            this.Clear.UseVisualStyleBackColor = true;
+            this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Clear);
             this.Controls.Add(this.addButt);
             this.Controls.Add(this.deleteButt);
             this.Controls.Add(this.dataGridView);
@@ -81,6 +94,7 @@
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button deleteButt;
         private System.Windows.Forms.Button addButt;
+        private System.Windows.Forms.Button Clear;
     }
 }
 

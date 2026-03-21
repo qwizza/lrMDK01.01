@@ -18,8 +18,9 @@ namespace DBTestUsers
         public Form1()
         {
             InitializeComponent();
-            List<User> users = loader.Load();
+            BindingList<User> users = loader.Load();
             dataGridView.DataSource = users;
+            dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void deleteButt_Click(object sender, EventArgs e)
@@ -27,6 +28,16 @@ namespace DBTestUsers
             DataGridViewRow row = dataGridView.SelectedRows[0];
             User user = row.DataBoundItem as User;
             loader.DeleteUser(user.Login);
+        }
+
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            loader.ClearUser();
+        }
+
+        private void addButt_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

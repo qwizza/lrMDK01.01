@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,13 +12,12 @@ namespace DBTestUsers
 {
    public class PgUsersLoader
    {
+        BindingList<User> loader = new BindingList<User>();
         private const string connectSetting = "Host=192.168.1.48;Username=st50-11;Password=5011;Database=MDK01.01Ryzhov";
-        public List<User> Load()
+        public BindingList <User> Load()
         {
             try
             {
-
-                List<User> result = new List<User>();
                 var con = new NpgsqlConnection(connectSetting);
                 con.Open();
                 var sql = "SELECT login, password, age, name, surname From myusers;";
@@ -33,15 +33,35 @@ namespace DBTestUsers
                         Name = reader.GetString(3),
                         Surname = reader.GetString(4),
                     };
-                    result.Add(user);
+                    loader.Add(user);
                 }
-                return result;
+                return loader;
             }
             catch (NpgsqlException execute)
             {
                 MessageBox.Show($"Ошибка: {execute.Message}");
 
                 return null;
+            }
+        }
+        public bool ClearUser()
+        {
+            try
+            {
+                bool result = true;
+                var con = new NpgsqlConnection(connectSetting);
+                con.Open();
+                var sql = @"DELETE FROM myusers";
+                var cmd = new NpgsqlCommand(sql, con);
+                int execute = cmd.ExecuteNonQuery();
+                loader.Clear();
+                return execute > 0;
+            }
+            catch (NpgsqlException execute)
+            {
+                MessageBox.Show($"Ошибка: {execute.Message}");
+
+                return false;
             }
         }
         public bool DeleteUser(string Login)
@@ -58,6 +78,15 @@ namespace DBTestUsers
                 if (execute > 0)
                 {
                     result = true;
+                    for (int i = 0; i < loader.Count; i++)
+                    {
+                        if (loader[i].Login == Login)
+                        {
+                            loader.RemoveAt(i);
+                            i--;
+                            
+                        }
+                    }
                 }
 
                 return result;

@@ -12,6 +12,7 @@ namespace DBTestUsers
 {
     public partial class addUser: Form
     {
+        private User editingUser;
         PgUsersLoader loader_;
         public addUser(PgUsersLoader loader)
         {
@@ -51,18 +52,29 @@ namespace DBTestUsers
 
         private void ApplyButt_Click_1(object sender, EventArgs e)
         {
-            User user = new User
+            editingUser.Login = loginTextBox.Text;
+            editingUser.Password = passwordTextBox.Text;
+            editingUser.Age = (int)ageNumericUpDown.Value;
+            editingUser.Name = nameTextBox.Text;
+            editingUser.Surname = surnameTextBox.Text;
+
+            bool success = loader_.EditUser(editingUser);
+
+            if (success)
             {
-                Login = loginTextBox.Text,
-                Password = passwordTextBox.Text,
-                Age = (int)ageNumericUpDown.Value,
-                Name = nameTextBox.Text,
-                Surname = surnameTextBox.Text
-            };
-            loader_.AddUser(user);
+                MessageBox.Show("Данные обновлены!");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Ошибка при обновлении данных!");
+            }
+
+
         }
         public void SetUser(User user)
         {
+            editingUser = user;
             loginTextBox.Text = user.Login;
             passwordTextBox.Text = user.Password;
             ageNumericUpDown.Value = user.Age;

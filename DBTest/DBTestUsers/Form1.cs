@@ -48,7 +48,7 @@ namespace DBTestUsers
             addUser addEditUser = new addUser(loader);
             addEditUser.SetUser(user);
             addEditUser.Show();
-            loader.DeleteUser(user.Login);
         }
+
     }
 }

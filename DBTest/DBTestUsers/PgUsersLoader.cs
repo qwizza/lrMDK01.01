@@ -135,7 +135,7 @@ namespace DBTestUsers
                 bool result = false;
                 var con = new NpgsqlConnection(connectSetting);
                 con.Open();
-                var sql = "INSERT INTO myusers(login, password, name, age, surname) VALUES(@login, @password, @name ,@age, @surname)";
+                var sql = "UPDATE myusers SET password = @password, name = @name, age = @age, surname = @surname WHERE login = @login";
                 var cmd = new NpgsqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@login", user.Login);
                 cmd.Parameters.AddWithValue("@password", user.Password);
@@ -143,12 +143,8 @@ namespace DBTestUsers
                 cmd.Parameters.AddWithValue("@age", user.Age);
                 cmd.Parameters.AddWithValue("@surname", user.Surname);
                 int execute = cmd.ExecuteNonQuery();
-                if (execute > 0)
-                {
-                    result = true;
-                    loader.Add(user);
-                }
-                return result;
+                con.Close();
+                return execute > 0; 
             }
             catch (NpgsqlException exception)
             {

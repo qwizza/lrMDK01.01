@@ -143,8 +143,23 @@ namespace DBTestUsers
                 cmd.Parameters.AddWithValue("@age", user.Age);
                 cmd.Parameters.AddWithValue("@surname", user.Surname);
                 int execute = cmd.ExecuteNonQuery();
-                con.Close();
-                return execute > 0; 
+                if (execute > 0)
+                {
+                    result = true;
+                    for (int i = 0; i < loader.Count; i++)
+                    {
+                        if (loader[i].Login == user.Login)
+                        {
+                            loader[i].Login = user.Login;
+                            loader[i].Password = user.Password;
+                            loader[i].Name = user.Name;
+                            loader[i].Surname = user.Surname;
+                            loader[i].Age = user.Age;
+                        }
+                    }
+                }
+
+                return result;
             }
             catch (NpgsqlException exception)
             {

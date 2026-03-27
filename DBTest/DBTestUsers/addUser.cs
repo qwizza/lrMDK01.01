@@ -69,8 +69,6 @@ namespace DBTestUsers
             {
                 MessageBox.Show("Ошибка при обновлении данных!");
             }
-
-
         }
         public void SetUser(User user)
         {

@@ -64,6 +64,34 @@ namespace DBTestUsers
                 return false;
             }
         }
+        public bool AddUser(User user)
+        {
+            try
+            {
+                bool addResult = false;
+                var con = new NpgsqlConnection(connectSetting);
+                con.Open();
+                var sql = "INSERT INTO myusers(login, password, name, age, surname) VALUES(@login, @password, @name ,@age, @surname)";
+                var cmd = new NpgsqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@login", user.Login);
+                cmd.Parameters.AddWithValue("@password", user.Password);
+                cmd.Parameters.AddWithValue("@name", user.Name);
+                cmd.Parameters.AddWithValue("@age", user.Age);
+                cmd.Parameters.AddWithValue("@surname", user.Surname);
+                int execute = cmd.ExecuteNonQuery();
+                if (execute > 0)
+                {
+                    addResult = true;
+                    loader.Add(user);
+                }
+                return addResult;
+            }
+            catch (NpgsqlException exception)
+            {
+                MessageBox.Show($"Ошибка: {exception.Message}");
+                return false;
+            }
+        }
         public bool DeleteUser(string Login)
         {
             try
@@ -88,7 +116,7 @@ namespace DBTestUsers
                         }
                     }
                 }
-
+               
                 return result;
 
             }
@@ -99,6 +127,34 @@ namespace DBTestUsers
                 return false;
             }
             
+        }
+        public bool EditUser(User user)
+        {
+            try
+            {
+                bool result = false;
+                var con = new NpgsqlConnection(connectSetting);
+                con.Open();
+                var sql = "INSERT INTO myusers(login, password, name, age, surname) VALUES(@login, @password, @name ,@age, @surname)";
+                var cmd = new NpgsqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@login", user.Login);
+                cmd.Parameters.AddWithValue("@password", user.Password);
+                cmd.Parameters.AddWithValue("@name", user.Name);
+                cmd.Parameters.AddWithValue("@age", user.Age);
+                cmd.Parameters.AddWithValue("@surname", user.Surname);
+                int execute = cmd.ExecuteNonQuery();
+                if (execute > 0)
+                {
+                    result = true;
+                    loader.Add(user);
+                }
+                return result;
+            }
+            catch (NpgsqlException exception)
+            {
+                MessageBox.Show($"Ошибка: {exception.Message}");
+                return false;
+            }
         }
    }
 }

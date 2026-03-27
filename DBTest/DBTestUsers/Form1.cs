@@ -37,7 +37,18 @@ namespace DBTestUsers
 
         private void addButt_Click(object sender, EventArgs e)
         {
+            addUser addUser = new addUser(loader);
+            addUser.Show();
+        }
 
+        private void EditButt_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dataGridView.SelectedRows[0];
+            User user = row.DataBoundItem as User;
+            addUser addEditUser = new addUser(loader);
+            addEditUser.SetUser(user);
+            addEditUser.Show();
+            loader.DeleteUser(user.Login);
         }
     }
 }

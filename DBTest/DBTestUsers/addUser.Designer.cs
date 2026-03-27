@@ -1,6 +1,6 @@
-﻿namespace addUsers
+﻿namespace DBTestUsers
 {
-    partial class addUsers
+    partial class addUser
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -106,7 +106,7 @@
             this.OKButt.TabIndex = 6;
             this.OKButt.Text = "OK";
             this.OKButt.UseVisualStyleBackColor = true;
-            this.OKButt.Click += new System.EventHandler(this.OKButt_Click);
+            this.OKButt.Click += new System.EventHandler(this.OKButt_Click_1);
             // 
             // CancelButt
             // 
@@ -116,7 +116,7 @@
             this.CancelButt.TabIndex = 7;
             this.CancelButt.Text = "Отмена";
             this.CancelButt.UseVisualStyleBackColor = true;
-            this.CancelButt.Click += new System.EventHandler(this.CancelButt_Click);
+            this.CancelButt.Click += new System.EventHandler(this.CancelButt_Click_1);
             // 
             // ApplyButt
             // 
@@ -126,7 +126,7 @@
             this.ApplyButt.TabIndex = 8;
             this.ApplyButt.Text = "Применить";
             this.ApplyButt.UseVisualStyleBackColor = true;
-            this.ApplyButt.Click += new System.EventHandler(this.ApplyButt_Click);
+            this.ApplyButt.Click += new System.EventHandler(this.ApplyButt_Click_1);
             // 
             // surnameTextBox
             // 
@@ -160,14 +160,14 @@
             // 
             this.ageNumericUpDown.Location = new System.Drawing.Point(76, 120);
             this.ageNumericUpDown.Name = "ageNumericUpDown";
-            this.ageNumericUpDown.Size = new System.Drawing.Size(168, 20);
+            this.ageNumericUpDown.Size = new System.Drawing.Size(53, 20);
             this.ageNumericUpDown.TabIndex = 16;
             // 
-            // addUsers
+            // addUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 220);
+            this.ClientSize = new System.Drawing.Size(260, 220);
             this.Controls.Add(this.ageNumericUpDown);
             this.Controls.Add(this.loginTextBox);
             this.Controls.Add(this.passwordTextBox);
@@ -185,7 +185,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "addUsers";
+            this.Name = "addUser";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.ageNumericUpDown)).EndInit();
             this.ResumeLayout(false);
@@ -211,4 +211,3 @@
         private System.Windows.Forms.NumericUpDown ageNumericUpDown;
     }
 }
-

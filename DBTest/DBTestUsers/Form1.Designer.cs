@@ -32,6 +32,7 @@
             this.deleteButt = new System.Windows.Forms.Button();
             this.addButt = new System.Windows.Forms.Button();
             this.Clear = new System.Windows.Forms.Button();
+            this.EditButt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,9 +46,9 @@
             // 
             // deleteButt
             // 
-            this.deleteButt.Location = new System.Drawing.Point(725, 339);
+            this.deleteButt.Location = new System.Drawing.Point(694, 339);
             this.deleteButt.Name = "deleteButt";
-            this.deleteButt.Size = new System.Drawing.Size(75, 23);
+            this.deleteButt.Size = new System.Drawing.Size(94, 23);
             this.deleteButt.TabIndex = 1;
             this.deleteButt.Text = "Удалить";
             this.deleteButt.UseVisualStyleBackColor = true;
@@ -55,9 +56,9 @@
             // 
             // addButt
             // 
-            this.addButt.Location = new System.Drawing.Point(644, 339);
+            this.addButt.Location = new System.Drawing.Point(394, 339);
             this.addButt.Name = "addButt";
-            this.addButt.Size = new System.Drawing.Size(75, 23);
+            this.addButt.Size = new System.Drawing.Size(94, 23);
             this.addButt.TabIndex = 2;
             this.addButt.Text = "Добавить";
             this.addButt.UseVisualStyleBackColor = true;
@@ -65,19 +66,30 @@
             // 
             // Clear
             // 
-            this.Clear.Location = new System.Drawing.Point(563, 339);
+            this.Clear.Location = new System.Drawing.Point(594, 339);
             this.Clear.Name = "Clear";
-            this.Clear.Size = new System.Drawing.Size(75, 23);
+            this.Clear.Size = new System.Drawing.Size(94, 23);
             this.Clear.TabIndex = 3;
             this.Clear.Text = "Очистить";
             this.Clear.UseVisualStyleBackColor = true;
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
+            // 
+            // EditButt
+            // 
+            this.EditButt.Location = new System.Drawing.Point(494, 339);
+            this.EditButt.Name = "EditButt";
+            this.EditButt.Size = new System.Drawing.Size(94, 23);
+            this.EditButt.TabIndex = 9;
+            this.EditButt.Text = "Редактировать";
+            this.EditButt.UseVisualStyleBackColor = true;
+            this.EditButt.Click += new System.EventHandler(this.EditButt_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.EditButt);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.addButt);
             this.Controls.Add(this.deleteButt);
@@ -95,6 +107,7 @@
         private System.Windows.Forms.Button deleteButt;
         private System.Windows.Forms.Button addButt;
         private System.Windows.Forms.Button Clear;
+        private System.Windows.Forms.Button EditButt;
     }
 }
 

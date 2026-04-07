@@ -20,7 +20,7 @@ namespace zachet
             olenivods.Add(olenivod);
             olenivods.Add(olenivod2);
             olenivods.Add(olenivod3);
-            Console.WriteLine(olenivod2.GetName());
+            Console.WriteLine(olenivod2.GetName()); 
 
         }
         

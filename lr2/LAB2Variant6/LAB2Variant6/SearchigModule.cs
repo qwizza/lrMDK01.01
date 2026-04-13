@@ -5,45 +5,31 @@ namespace LAB2Variant6
 {
     public class SearchingModule
     {
-        static public int FindIndexCatalog(string userQuery, string[] сatalog)
+        // Ищем индекс категории в массиве (Супы, Салаты и т.д.)
+        static public int FindIndexCatalog(string userQuery, string[] catalog)
         {
-            for (int index = 0; index < сatalog.Length; ++index)
+            for (int index = 0; index < catalog.Length; ++index)
             {
-                string valueCatalog = сatalog[index].ToLower();
-                if (valueCatalog == userQuery.ToLower())
+                // Приводим обе строки к нижнему регистру для сравнения
+                if (catalog[index].ToLower() == userQuery.ToLower())
                 {
                     return index;
                 }
             }
-
-            return -1;
+            return -1; // Если ничего не нашли
         }
-        static public (List<string>, List<int>) FindAllDishsByCenre(int indexCatalog,
-                                                            List<string>[] allDishs,
-                                                            List<int>[] counts)
-        {
-            List<string> dishsByCatalog = new List<string>();
-            List<int> countsByCatalog = new List<int>();
 
-            dishsByCatalog = allDishs[indexCatalog];
-            countsByCatalog = counts[indexCatalog];
+        // Извлекаем списки блюд и их количеств для выбранной категории
+        static public (List<string>, List<int>) FindAllDishsByCenre(int indexCatalog,
+                                                                  List<string>[] allDishs,
+                                                                  List<int>[] counts)
+        {
+            // ВАЖНО: Создаем новые списки (new List), чтобы при сортировке 
+            // не перемешать данные в основном каталоге.
+            List<string> dishsByCatalog = new List<string>(allDishs[indexCatalog]);
+            List<int> countsByCatalog = new List<int>(counts[indexCatalog]);
 
             return (dishsByCatalog, countsByCatalog);
-        }
-
-        internal static int FindIndexCatalog(string userQuery, object сatalog)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal static (List<string> dishsUserCatalog, List<int> countsUserCatalog) FindAllDishsByCenre(int indexCatalog, object dishs, object counts)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal static (List<string> dishsUserCatalog, List<int> countsUserCatalog) FindAllDishsByCenre(int indexCatalog, List<string>[] dishs, object counts)
-        {
-            throw new NotImplementedException();
         }
     }
 }

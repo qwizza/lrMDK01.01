@@ -6,52 +6,49 @@ namespace LAB2Variant6
 {
     class Program
     {
-        private static string[] catalog;
-        private static List<string>[] dishs;
-        private static List<int>[] counts;
-
-        static void Print(List<string> dishes, List<int> counts, double average, string category)
+        // Выводит названия блюд через запятую
+        static void Print(List<string> dishes)
         {
-            Console.WriteLine($"Отчет по категории: {category} \nБлюда в порядке убывания популярности:");
+            Console.WriteLine("Блюда: " + String.Join(", ", dishes));
+        }
 
-            for (int i = 0; i < dishes.Count; i++)
-            {
-                Console.WriteLine($"{i + 1}. {dishes[i]}: {counts[i]} заказов");
-            }
-
-            Console.WriteLine($"Среднее число заказов: {average:F2}");
+        // Выводит количество заказов через запятую
+        static void Prints(List<int> counts)
+        {
+            Console.WriteLine("Количество заказов: " + String.Join(", ", counts));
         }
 
         static void Main()
         {
-            string[] catalog = new string[] { "Супы", "Салаты", "Выпечка", "Гарниры" };
+            string[] catalog = { "Супы", "Салаты", "Выпечка", "Гарниры" };
 
-            var result = InputModule.InputDishByCentre();
-            List<string>[] dishs = result.Item1;
-            List<int>[] counts = result.Item2;
+            // 1. Ввод
+            var (dishsByCatalog, countsByCatalog) = InputModule.InputDishByCentre();
 
+            // 2. Запрос категории
             string userQuery = InputModule.InputUserQuery();
 
+            // 3. Поиск индекса
             int indexCatalog = SearchingModule.FindIndexCatalog(userQuery, catalog);
             if (indexCatalog < 0)
             {
-                Console.WriteLine("Указан несуществующий категория");
+                Console.WriteLine("Указана несуществующая категория");
                 return;
             }
 
-            if (dishs == null || counts == null || indexCatalog >= dishs.Length)
-            {
-                Console.WriteLine("Ошибка: данные не загружены");
-                return;
-            }
+            // 4. Поиск данных по категории
+            var (selectedDishes, selectedCounts) = SearchingModule.FindAllDishsByCenre(indexCatalog, dishsByCatalog, countsByCatalog);
 
-            (List<string> dishsUserCatalog, List<int> countsUserCatalog) = SearchingModule.FindAllDishsByCenre(indexCatalog, dishs, counts);
+            // 5. Анализ и сортировка
+            AnalysisDataModule.SortDishs(selectedDishes, selectedCounts);
 
-           AnalysisDataModule.SortDishs(dishsUserCatalog, countsUserCatalog);
+            // 6. Вывод результата
+            Console.WriteLine($"\n--- Отчет по категории: {catalog[indexCatalog]} ---");
+            Print(selectedDishes);
+            Prints(selectedCounts);
 
-           double average = AnalysisDataModule.CalculateAverage(countsUserCatalog);
-
-           Print(dishsUserCatalog, countsUserCatalog, average, catalog[indexCatalog]);
+            double average = AnalysisDataModule.CalculateAverage(selectedCounts);
+            Console.WriteLine($"Среднее число заказов: {average:F2}");
         }
     }
 }

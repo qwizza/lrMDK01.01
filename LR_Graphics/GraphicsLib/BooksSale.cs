@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LR_Lib.Model
+namespace GraphicsLib
 {
-    public class Sale
+    public class BooksSale
     {
-        public DateTime Time { get; set; }
-        public int Count { get; set; }
+        public DateTime Date { get; set; }
+        public int Quantity { get; set; }
     }
 }

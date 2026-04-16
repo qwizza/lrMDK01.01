@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LR3Сhart
+namespace LR_Graphics
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace LR3Сhart
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Chart());
+            Application.Run(new MainForm());
         }
     }
 }

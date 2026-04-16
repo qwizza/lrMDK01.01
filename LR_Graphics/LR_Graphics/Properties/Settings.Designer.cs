@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LR3Сhart.Properties
+namespace LR_Graphics.Properties
 {
 
 
